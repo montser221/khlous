@@ -46,16 +46,13 @@
                     <input id="inputProjectName" type="text" name="projectName" شعautofocus class="form-control" placeholder="أكتب إسم المشروع">
                   </div>
                   <!-- <div class="col">
-                    <?php
-                      $projectsCategories = App\Models\ProjectsCategories::all();
-                      // dd($projectsCategories);
-                    ?>
+
                     <label class="label-control" for="projectCategoryId">الفئة المستهدفة</label>
                     <select class="form-control" name="projectCategoryId" style="padding:0" >
                         <option >أختر المجموعة</option>
-                        @foreach ($projectsCategories as $categories)
-                          <option  class="form-control" value="{{$categories->categoryId}}">{{$categories->categoryName}}</option>
-                        @endforeach
+                        {{-- @foreach ($projectsCategories as $categories) --}}
+                          <option  class="form-control" value="{$categories->categoryId}}">{$categories->categoryName}}</option>
+                        {{-- @endforeach --}}
                     </select>
                   </div> -->
                   <div class="col">
@@ -107,7 +104,6 @@
                       <label class="form-check-label" for="projectStatus" > تفعيل المشروع</label>
                     </div>
                   </div>
-
                 </div>
 
             </div>
@@ -140,19 +136,16 @@
           <th> أحداث  </th>
         </thead>
         <tbody>
-        <?php $ids = 0?>
           @foreach ($allprojects as $project)
-            <?php $ids++?>
             <tr>
-              <td>  {{$ids}}  </td>
+              <td>  {{$loop->index   +1}}  </td>
               <td>{{$project->projectName}}</td>
               <td>{{$project->projectLocation}}</td>
-              <td>{{$project->projectCost}}</td>
+              <td>{{ number_format($project->projectCost,2)}}</td>
               <td>{{$project->whatsapp}}</td>
-              <td>{{ \App\Models\ProjectsCategories::find($project->projectCategoryId)->categoryName}}</td>
-              <td> <img style="max-width:40px;max-height:40px" src="{{url("uploads/".$project->projectImage)}}" class="special-img" alt=""> </td>
-              <!--<td> <img style="max-width:40px;max-height:40px" src="{{url("uploads/".$project->projectWrapper)}}" class="wrapper" alt=""> </td>-->
-              <td> <img style="max-width:40px;max-height:40px" src="{{url("uploads/".$project->projectIcon)}}" class="icon" alt="" /></i> </td>
+              <td>{{ $project->pcategory->categoryName}}</td>
+              <td> <img style="max-width:40px;max-height:40px" src="{{url("".$project->projectImage)}}" class="special-img" alt=""> </td>
+              <td> <img style="max-width:40px;max-height:40px" src="{{url("".$project->projectIcon)}}" class="icon" alt="" /></i> </td>
               <td>نعم</td>
               <td class="@if ($project->projectStatus==1) text-success  @else text-danger   @endif">
                 @if ($project->projectStatus==1)
@@ -175,7 +168,7 @@
         </tbody>
       </table>
       <div class="container">
-          {{$allprojects->links()}}
+          {{$allprojects->links()->count}}
       </div>
     </div>
 @endsection

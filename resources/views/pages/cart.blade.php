@@ -8,7 +8,7 @@
   <div class="container-fluid px-0 banner" id="basket-banner">
              <div class="container">
                  <div class="page-path">
-                     <p><a href="{{route('home')}}"> الرئيسية </a>/ السلة </p>
+                     <p><a href="{{route('/')}}"> الرئيسية </a>/ السلة </p>
                  </div>
              </div>
          </div>
@@ -40,7 +40,7 @@
                 </ul>
             </div>
         @endif
-   
+
         @if (\Session::has('success'))
          <div class="alert alert-success success">
              <ul>
@@ -54,7 +54,7 @@
                 @if (\Session::has('cart'))
                   <table class="table">
                     <thead>
-                      
+
                       <th> المشروع</th>
                       <th> القيمة </th>
                       <th> حذف</th>
@@ -71,17 +71,17 @@
                     @if(is_array($cart))
                       @foreach ($cart as $c)
                         <tr>
-                         
+
                           <td style="font-size: 14px;">   {{ ($c['projectName'])  }}  </td>
 
                             <td> <form class=""  method="post" action="#test">
                               <?php
 
-                              if(!intval($c['den'])) 
+                              if(!intval($c['den']))
                               {
                                   $c['den'] = 0;
                               }
-                              else 
+                              else
                               {
                                   for ($i=0; $i  < $count; $i++) {
                                   $total += $c['den'];
@@ -107,7 +107,7 @@
                               </form>
                             </div>
                           </td>
-                  
+
                         </tr>
                       @endforeach
                     @endif
@@ -136,7 +136,7 @@
           // }
            ?>
              <div class="col col-md-6 offset-md-6 text-gray mt-5 ">
-            
+
                إجمالي التبرع
                <span class="main-color mr-130"> <span class="total"> {{$total ?? 0}} </span> ر.س </span>
                <hr>
@@ -197,7 +197,7 @@
                   </div>
               </div>
                <div class="col-md-6">
-                 <input class="form-control " required type="password" name="source[cvc]" placeholder="الرمز السري">
+                 <input class="form-control " required type="password" name="source[cvc]" placeholder="رمز الامان">
                </div>
              </div>
              <button class="btn  btn-main-color back-main position-fix cart-p-fix   mx-auto" type="submit">تبرع الآن</button>

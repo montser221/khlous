@@ -13,14 +13,14 @@
         <div class="col-sm-12">
           <div class="h2 text-center mt-5 main-color">   @if ($projectData)   {{$projectData->projectName ?? ''}} @endif  </div>
            <div class="text-center center-phone  mb-2"><img src="{{url('design/shape.png')}}"></div>
-          
+
         </div>
         <div class="col-sm-12 mt-5">
           <div class="row">
             <div class="col-md-8 offset-md-2 p-detail">
-            @if ($projectData) 
+            @if ($projectData)
               <img  style="min-height:350px;border-radius:5px"
-               src="{{ url("uploads/".$projectData->projectImage)}}" class="d-block w-100 fix-ph" alt="">
+               src="{{ url($projectData->projectImage)}}" class="d-block w-100 fix-ph" alt="">
                <div class="p-name">
                   {{$projectData->projectName}}
                </div>
@@ -35,11 +35,8 @@
                     <button   class="d-inline-block btn btn-active btn-total-cost"  type="button" name="button">  {{$projectData->projectCost}} SAR</button>
                   </div>
                   <?php
-                  $getAllDenoate = \DB::table('denoate_pay_details')
-                                      ->where('projectTable',$projectData->projectId)
-                                      ->sum('moneyValue');
-                                      // ->get();
-                    
+                    $getAllDenoate = $projectData->denoate->sum('moneyValue')
+
                   ?>
                   <div class="p-total mb-5">
                     <strong  class="text-gray" style="margin-left:2rem"  class="d-inline-block"> إجمالي التبرعات  </strong>
@@ -61,7 +58,7 @@
                          .fa-3x { font-size: 1.8em;}
                        }
                        .detail-error {
-                         border:1px solid #ff2424 !important 
+                         border:1px solid #ff2424 !important
                          }
                          .detail-success {
                            border:1px solid green !important;
@@ -79,18 +76,18 @@
                     <a data-toggle="tooltip"  offset="2" data-placement="top" title="مشاركة" target="_blank" href="https://twitter.com/intent/tweet?url={{route('projectDetail',$projectData->projectId)}}&text=مشروع :- {{$projectData->projectText }}">
                     <!--<i class="fa fa-twitter fa-3x twitter-share-button"></i>-->
                     <img style="width: 38px;" src="{{url('design/icons/twitter.png')}}" />
-                    </a>                   
+                    </a>
                     <a data-toggle="tooltip"  offset="2" data-placement="top" title="مشاركة" target="_blank" href="https://t.me/share/url?url={{route("projectDetail",$projectData->projectId)}}&text={{$projectData->projectText }}">
                       <!--<i class="fa fa-telegram fa-3x"></i>-->
                       <img style="width: 38px;" src="{{url('design/icons/telegram.png')}}" />
-                    </a>                    
+                    </a>
                     <a data-toggle="tooltip"  offset="2" data-placement="top" title="مشاركة" target="_blank" href="https://api.whatsapp.com/send?text={{route("projectDetail",$projectData->projectId)}} مشروع :- {{$projectData->projectText }} " data-action="share/whatsapp/share">
                       <!--<i class="fa fa-whatsapp fa-3x"></i>-->
                         <img style="width: 38px;" src="{{url('design/icons/whatsapp.png')}}" />
                     </a>
                   </div>
 
-                 
+
                    <div class="progress mb-5"  data-toggle="tooltip"  offset="2" data-placement="top" title="@if($getAllDenoate >= $projectData->projectCost ) {{  $projectData->projectCost }} @else  {{ number_format( $getAllDenoate ,0)}} @endif SAR ">
                     <div class="progress-bar" role="progressbar"
 
@@ -98,46 +95,46 @@
                  aria-valuemin="0" aria-valuemax="100"
                 > @if($getAllDenoate >= $projectData->projectCost ) 100% @else
                 <small     style="font-size:13px;color:#32353c">
-                
+
                  {{  round($getAllDenoate / $projectData->projectCost * 100) }}% @endif</div>
                 </small>
           </div>
 
 
                   <div class="p-buttons">
-                          
+
                           <div class="arrows  ">
                             <?php
                           foreach($projectData->arrow as $a)
                           {?>
-                            
+
                           <div class="arrow">
-         
+
                             @csrf
                             @method('post')
-                            <button  type="submit" class="custom-input">
+                            <button  type="submit" class="custom-input" style="   min-width: 273px; padding: 11px;">
                                 {{ $a->arrowName }} / {{ $a->arrowValue }} ريال
                               <input class="arrVal" type="hidden"  value="{{ $a->arrowValue }}" />
-                            </button> 
+                            </button>
                             </div>
                         <?php
                         }
                       ?>
                         </div>
-                      
+
                     <form charset="utf-8" class="d-inline detailForm" action="{{ route('addToCart',$projectData->projectId) }}" method="post">
                         <input type="hidden" name="projectDetail" value="true"/>
                         <input type="hidden" name="pid" value="{{$projectData->projectId}}" />
                         <i id="check" class="fa fa-check fa-2x " style="color: green;display:none"></i>
-                     <input  
-                    class="custom-input text-center input_denoate  projectdetailvalue @if($errors->has('dnow') || $errors->has('denoate') ) detail-error  @endif"  
-
-                     id="c_denoate" 
-                     type="number" 
-                     name="denoate" 
+                     <input
+                    class="custom-input text-center input_denoate  projectdetailvalue @if($errors->has('dnow') || $errors->has('denoate') ) detail-error  @endif"
+                    style="   min-width: 273px; padding: 11px;"
+                     id="c_denoate"
+                     type="number"
+                     name="denoate"
                      placeholder="آخرى"
                      />
-                    
+
                       @csrf
                       @method('post')
                       <button  id="add-to-basket-detail"  type="submit" style="border:none;padding:10px" class="bs btn-basket" data-toggle="tooltip"  data-placement="bottom" title="إضافة الى السلة">
@@ -148,10 +145,10 @@
                 </div>
                  <form class="d-inline-flex dnow-form" action="{{route('addToCartNow',$projectData->projectId)}}" method="post">
                   @csrf
-                  @method('post')
+                @method('post')
                   <input type="hidden"  name="dnow"  class="dnow" value="">
 
-                  <button id="btn-basket" style="border:0" class="btn-denoate projectdetail" 
+                  <button id="btn-basket" style="border:0" class="btn-denoate projectdetail"
                   type="submit">تبرع الآن </button>
                 </form>
                 <!--<div class="basket">-->

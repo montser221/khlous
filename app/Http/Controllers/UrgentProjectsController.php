@@ -18,10 +18,9 @@ class UrgentProjectsController extends Controller
      */
     public function index()
     {
-        $allprojects = Projects::with(['arrow','denoate'])->latest()->whereNotIn('projectCategoryId',[1])->paginate(10);
-        return view('dashboard.urgentprojects.index')->with(['allprojects'=>$allprojects]);
+        return view('dashboard.urgentprojects.index');
     }
-     
+
     /**
      * Store a newly created resource in storage.
      *
@@ -31,7 +30,7 @@ class UrgentProjectsController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-       
+
           'projectName'        => 'required|unique:projects|max:255',
         //   'projectCategoryId'  => 'required|numeric',
           'projectDesc'        => 'required',
@@ -63,7 +62,7 @@ class UrgentProjectsController extends Controller
           if (!file_exists($uploads_folder)) {
               mkdir($uploads_folder, 0777, true);
           }
-        
+
           $request->file('projectIcon')->move($uploads_folder,$image_full_name);
           $image = Image::make( $uploads_folder . $image_full_name )->fit(1200,1200);
           $image->save();
@@ -79,11 +78,11 @@ class UrgentProjectsController extends Controller
           if (!file_exists($uploads_folder)) {
               mkdir($uploads_folder, 0777, true);
           }
-   
+
           $request->file('projectImage')->move($uploads_folder,$image_full_name);
           $image = Image::make( $uploads_folder .$image_full_name)->fit(1700,700);
           $image->save();
-       
+
 
           $project->projectImage=$image_full_name;
 
@@ -123,14 +122,14 @@ class UrgentProjectsController extends Controller
     public function update(Request $request, $id)
     {
       $request->validate([
-       
+
         //   'projectCategoryId'  => 'required|numeric',
           'projectDesc'        => 'required',
           'projectText'        => 'required',
           'projectLocation'    => 'required',
           'projectCost'        => 'required|numeric',
       ]);
-      
+
       // check if project status checked or not
       if($request->has('projectStatus') )
       {
@@ -193,7 +192,7 @@ class UrgentProjectsController extends Controller
             'projectImage'=>$image_full_name,
           ]);
       }
-        
+
 
       \DB::table('projects')
       ->where('projectId',$id)
@@ -217,7 +216,7 @@ class UrgentProjectsController extends Controller
         'projectData'=>$projectData,
       ]);
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *

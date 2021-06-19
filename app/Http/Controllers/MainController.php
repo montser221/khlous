@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Projects;
-use App\Models\AboutAssociation;
 use App\Models\Services;
 use App\Models\Agent;
 use App\Models\ImageManagement;
@@ -12,37 +11,19 @@ use App\Models\pdfFile;
 use App\Models\Cart;
 use App\Models\video;
 use App\Models\Statistics;
-use App\Models\Pages;
-use App\Models\PagesViews;
 use Session;
 use App\Models\Money;
 class MainController extends Controller
 {
   public function index()
   {
-
-    $aboutassociation = AboutAssociation::find(1);
-    $allprojects = Projects::with('arrow','denoate')->latest()->take(10)->where('projectStatus',1)->whereNotIn('projectCategoryId',[3])->get();
-    $urgentprojects = Projects::with('arrow','denoate')->latest()->take(10)->where('projectStatus',1)->whereNotIn('projectCategoryId',[1])->get();
-    $services = Services::all();
-    $agents = Agent::all()->where('agentStatus',1);
-    $files = pdfFile::all()->where('fileStatus',1);
-    $imagesAlbum = ImageManagement::all()->where('imageStatus',1);
-    $videos =  video::all()->where('videoStatus',1);
-    $statistics  = Statistics::all()->where('sStatus',1);
-    $reportFiles = Money::all()->where('reportStatus',1);
-    return view('index')->with([
-      'allprojects'=>$allprojects,
-      'urgentprojects'=>$urgentprojects,
-      'aboutassociation'=>$aboutassociation,
-      'files'=>$files,
-      'reportFiles'=>$reportFiles,
-      'services'       =>$services,
-      'agents'       =>$agents,
-      'images'       =>$imagesAlbum,
-      'videos'       =>$videos,
-      'statistics'    =>$statistics,
-
+      return view('index')->with([
+      'reportFiles'   =>Money::latest()->take(10)->where('reportStatus',1),
+      'services'      =>Services::latest()->take(5)->where('serviceStatus',1),
+      'agents'        =>Agent::latest()->take(5)->where('agentStatus',1),
+      'images'        =>ImageManagement::latest()->take(10)->where('imageStatus',1),
+      'videos'        =>video::latest()->take(10)->where('videoStatus',1),
+      'statistics'    =>Statistics::latest()->take(5)->where('sStatus',1),
     ]);
   }
 
@@ -57,7 +38,7 @@ class MainController extends Controller
     $request->session()->put('cart',$cart);
     // dd(session()->get('cart'));
 
-    return redirect()->route('home');
+    return redirect()->route('/');
   }
 
   public function cart()   {
@@ -68,18 +49,12 @@ class MainController extends Controller
   // Our projects page
   public function ourproject()
   {
-    $allprojects = Projects::latest()->where('projectStatus',1)->paginate(9);
-    return view('pages.ourproject')->with([
-      'allprojects'=>$allprojects,
-    ]);
+    return view('pages.ourproject');
   }
 
   public function urgentproject()
   {
-    $urgentprojects = Projects::with('arrow','denoate')->latest()->where('projectStatus',1)->whereNotIn('projectCategoryId',[1])->paginate(6);
-    return view('pages.urgentproject')->with([
-      'urgentprojects'=>$urgentprojects,
-    ]);
+    return view('pages.urgentproject');
   }
 
   //our zakat page

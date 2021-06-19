@@ -28,7 +28,7 @@
 
       {{-- @if ($project->projectStatus==1) --}}
 
-       <img style="margin-bottom: 170px !important;" src="{{ url("uploads/".$project->projectImage)}}" class="d-block w-100" alt="...">
+       <img style="margin-bottom: 170px !important;" src="{{ url($project->projectImage)}}" class="d-block w-100" alt="...">
 
        <div class="container">
 
@@ -38,7 +38,7 @@
 
              <div class="col-md-4" style="display: flex;">
               <a href="{{route('projectDetail',$project->projectId)}}">
-                <img class="p-image"   src="{{url("uploads/".$project->projectIcon)}}">
+                <img class="p-image"   src="{{url($project->projectIcon)}}">
               </a>
 
                <div class="project-name">
@@ -57,12 +57,12 @@
                {{$project->projectText}}
              </div>
              <div class="col-md-4">
-               <?php
-               $getAllDenoate = \DB::table('denoate_pay_details')
-                                   ->where('projectTable',$project->projectId)
-                                   ->sum('moneyValue');
-                                   // ->get();
-               ?>
+              @php
+                  $getAllDenoate = $project->denoate->sum('moneyValue');
+
+              @endphp
+
+
                <div class="denoate">
                  <span>إجمالي التبرعات</span>
                  <div class="denoate-total">
@@ -134,7 +134,7 @@
 <section class="about-association">
   <div class="container">
     <hr>
-      <p style="padding-bottom: 32px;">مرحبا بك في جمعية البر الخيرية بمحافظة المويه! <span > <a class="main-color" href="{{route('ourproject')}}">تصفح المشاريع</a> الخيرية للقيام بالتبرع  </span></p>
+      <p style="padding-bottom: 32px;">مرحبا بك في  {{$aboutassociation->associationTitle }} بمحافظة  {{ $aboutassociation->location}}! <span > <a class="main-color" href="{{route('ourproject')}}">تصفح المشاريع</a> الخيرية للقيام بالتبرع  </span></p>
     <hr>
 </div>
 </section>
@@ -177,9 +177,20 @@
   <div class="container text-center">
     <div class="row">
     <div class="col-sm ">
-      <div class="back-vison">
+      <div class="back-vison"
+       style="@if($aboutassociation->visonImage)
+        background:url({{$aboutassociation->visonImage}});
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+        width: 500px;
+         @else
+          background:var(--secondary-color);
+          width:500px;
+         @endif">
       <div class="  vison">
-        <img src="{{url("uploads/aboutassoiation/".$aboutassociation->visonIcon)}}" alt="">
+        <img src="{{url($aboutassociation->visonIcon)}}" alt="">
         <div class="vison-title">
           الرؤية
           <p class="vison-text">
@@ -191,9 +202,20 @@
     </div>
 
       <div class="col-sm ">
-      <div class="back-message">
+      <div class="back-message"
+      style="@if($aboutassociation->messageImage)
+      background:url({{$aboutassociation->messageImage}});
+      background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+        width: 500px;
+        @else
+        background:var(--secondary-color);
+        width:500px
+         @endif">
       <div class="  message">
-        <img src="{{url("uploads/aboutassoiation/".$aboutassociation->messageIcon)}}" alt="">
+        <img src="{{url($aboutassociation->messageIcon)}}" alt="">
         <div class="msg-title">
           الرسالة
           <p class="message-text">
@@ -257,7 +279,7 @@
       <button id="allProjects" class="btn btn-light btn-urgent">  كل المشاريع </button>
     @endif
     @if ($showUrgent)
-      <button id="urgentProjects" class="btn btn-light"> المشاريع العاجلة</button>
+      {{-- <button id="urgentProjects" class="btn btn-light"> المشاريع العاجلة</button> --}}
     @endif
       <!--<button class="btn btn-light"> آخر المشاريع  </button>-->
     </div>
@@ -271,7 +293,7 @@
       {{-- <div class="carousel-item active"> --}}
         <div class="item-1 col-md-6 col-sm-12">
           <a href="{{route('projectDetail',$project->projectId)}}">
-          <img style=" height: 126px;   max-height: 175px;"  src="{{ url("uploads/".$project->projectImage) }}" class="" alt="1" />
+          <img style=" height: 126px;   max-height: 175px;"  src="{{ url($project->projectImage) }}" class="" alt="1" />
           <span class="d-block text-center  main-color">{{$project->projectName ?? ''}}</span>
         </a>
          <p style="font-size:15px;min-height:70px; max-height: 70px;   overflow: auto;">
@@ -289,9 +311,7 @@
              <strong style="display: inline-block">SAR</strong>
              <strong>
             <?php
-            $getAllDenoate = \DB::table('denoate_pay_details')
-                                ->where('projectTable',$project->projectId)
-                                ->sum('moneyValue');
+            $getAllDenoate = $project->denoate->sum('moneyValue');
             ?>
             @if($getAllDenoate >= $project->projectCost ) {{number_format( $project->projectCost ,0)}} @else  {{ number_format( $getAllDenoate ,0)}} @endif
             </strong>
@@ -321,13 +341,15 @@
                 background-color: #E6E6E6;
                 margin-bottom: 10px;
                 padding: 7px;
-            	min-width: 256px;
+            	min-width: 266px;
                 border: 1px solid #2fa89c;
             }
             ._add_ {
               border: none;
               padding: 8px !important;
-              background-color: #8eb527;
+              background: linear-gradient(rgba(21, 168, 148, 0.80) ,
+   rgba(21, 144, 127, 0.80) );
+              /* background-color: #8eb527; */
               color: #FFF;
               border-radius: 5px;
             }
@@ -335,14 +357,13 @@
           </style>
           <div class="project-buttons">
             <small class="d-block text-gray mb-2"> أختيار مبلغ التبرع </small>
-            <?php
-                $arr = \App\Models\Arrow::all()->where('projectTable',$project->projectId)->where('arrowStatus',1);
-                $count_arr = $arr->count();
-                ?>
-                @if($count_arr <= 0)
+
+                @if($project->arrow->count() <= 0)
+
                 @else
+
                  <?php
-                  foreach($arr as $a)
+                  foreach($project->arrow as $a)
                   {?>
             <button    class="c-b">
                 {{ $a->arrowName }} / {{ $a->arrowValue }} ريال
@@ -358,7 +379,7 @@
               @csrf
               @method('post')
               <input required="required" type="number"  name="denoate"  class="denoate-phone c_c" placeholder="ضع قيمة التبرع هنا">
-            <button  id="add-to-basket-project" type="submit" style="border:none;padding:10px" class="_add_" data-toggle="tooltip"  data-placement="bottom" title="إضافة الى السلة">  <i class="fa fa-shopping-basket"></i> </button>
+            <button   type="submit" style="border:none;padding:10px" class="_add_" data-toggle="tooltip"  data-placement="bottom" title="إضافة الى السلة">  <i class="fa fa-shopping-basket"></i> </button>
           </form>
         <form class="d-inline-flex dnow-form" action="{{route('addToCartNow',$project->projectId)}}" method="post">
           @csrf
@@ -409,15 +430,12 @@
       <div class="carousel-item {{ $loop->first ? 'active' :'' }} ">
         @foreach ($projectCollection as $project)
       {{-- <div class="carousel-item active"> --}}
-       <?php
-            $getAllDenoate = \DB::table('denoate_pay_details')
-                                ->where('projectTable',$project->projectId)
-                                ->sum('moneyValue');
-            ?>
-
+    @php
+        $getAllDenoate = $project->denoate->sum('moneyValue');
+    @endphp
         <div class="item-1 col-md-6 col-sm-12 ">
           <a href="{{route('projectDetail',$project->projectId)}}">
-          <img style=" height: 126px;   max-height: 175px;"  src="{{ url("uploads/".$project->projectImage) }}" class="" alt="1" />
+          <img style=" height: 126px;   max-height: 175px;"  src="{{ url($project->projectImage) }}" class="" alt="1" />
           <span class="d-block text-center  main-color">{{$project->projectName ?? ''}}</span>
         </a>
          <p style="font-size:15px;min-height:70px; max-height: 70px;   overflow: auto;">
@@ -470,6 +488,7 @@
               border: none;
               padding: 8px !important;
               background-color: #8eb527;
+              /* background-color: #8eb527; */
               color: #FFF;
               border-radius: 5px;
             }
@@ -500,7 +519,7 @@
               @csrf
               @method('post')
               <input required="required" type="number"  name="denoate"  class="denoate-phone c_c" placeholder="ضع قيمة التبرع هنا">
-            <button  id="add-to-basket-project" type="submit" style="border:none;padding:10px" class="_add_" data-toggle="tooltip"  data-placement="bottom" title="إضافة الى السلة">  <i class="fa fa-shopping-basket"></i> </button>
+            <button   type="submit" style="border:none;padding:10px" class="_add_" data-toggle="tooltip"  data-placement="bottom" title="إضافة الى السلة">  <i class="fa fa-shopping-basket"></i> </button>
           </form>
         <form class="d-inline-flex dnow-form" action="{{route('addToCartNow',$project->projectId)}}" method="post">
           @csrf
@@ -736,6 +755,7 @@
 
 @include('pages.ourpartner')
 <br>
+{{--
 <div class="media-libarary">
       <div class="container">   
         <style>
@@ -752,7 +772,7 @@
             </script>
             <br>
       </div>
-</div>
+</div> --}}
 
 <!-- Start Media Libarary -->
 
@@ -890,7 +910,7 @@
         <hr/>
 
         <?php $file_count =0 ;?>
-        @foreach ($files as $file)
+        @foreach ($pdffiles as $file)
         <?php $file_count++;?>
          @if($file_count > 4)
               <?php continue ?>

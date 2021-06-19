@@ -13,6 +13,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // \App\Models\UsersCategories::create([
+            // 'userCategoryName'=>'default'
+        // ]);
+        \App\Models\Settings::factory(1)->create();
+        \App\Models\AboutAssociation::factory(1)->create();
+        \App\Models\UsersCategories::factory(3)->create();
+        \App\Models\User::factory(1)->create();
+        \App\Models\ProjectsCategories::factory(3)->create();
+        \App\Models\Projects::factory(10)->create();
+        \App\Models\Arrow::factory(15)->create();
+        \App\Models\PaymentMethod::factory(4)->create();
+        \App\Models\DenoatePayDetail::factory(100)->create();
+
     }
 }

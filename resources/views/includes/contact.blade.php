@@ -7,7 +7,7 @@
           <!-- End Banner-->
     <div class="row">
       <div class="col-sm-6 center-phone">
-        <div class="h2 text-right main-color center-phone">تواصل معنا  </div>
+        <div class="h2 text-right center-phone" style="color: var(--main-color)">تواصل معنا  </div>
         <div class="word-title text-center">
            <div class="text-right mt-3 mb-4 center-phone"><img src="{{url('design/shape.png')}}"></div>
 
@@ -36,12 +36,12 @@
             @enderror
             </div>
           <div class="form-inline">
-            <input 
-                  class="form-control  ml-1 mb-2 fullname" 
-                  type="text" 
-                  placeholder="الاسم الكامل"  
-                  value="{{old('fullname')}}" 
-                  name="fullName" 
+            <input
+                  class="form-control  ml-1 mb-2 fullname"
+                  type="text"
+                  placeholder="الاسم الكامل"
+                  value="{{old('fullname')}}"
+                  name="fullName"
                   @error('fullName') style="width: 100%"  @enderror  >
                   @error('fullName')
               <div class="alert alert-danger w-100">

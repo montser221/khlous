@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Settings;
+use Image;
 class SettingsController extends Controller
 {
     /**
@@ -13,10 +14,11 @@ class SettingsController extends Controller
      */
     public function index()
     {
-      $allSettings = Settings::all();
       $data = Settings::find(1);
       // dd($data);
-      return view('dashboard.settings.index')->with(['allSettings'=>$allSettings,'data'=>$data]);
+      return view('dashboard.settings.index')
+      ->with(['allSettings'=>$data,
+      'data'=>$data]);
     }
 
 
@@ -32,7 +34,7 @@ class SettingsController extends Controller
       $request->validate([
           'foundationName'         => 'required|max:255',
           'foundationTitle'         => 'required|max:255',
-          'phoneNumber'            => 'required|numeric',
+          'phoneNumber'            => 'required',
            'email'                   => 'required|unique:settings',
           'foundationLogo'          => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
 
@@ -75,20 +77,24 @@ class SettingsController extends Controller
           $image_ext = $request->file('foundationLogo')->getClientOriginalExtension(); // example: png, jpg ... etc
           $image_full_name = $image_name . '.' . $image_ext;
 
-          $uploads_folder =  getcwd() .'/uploads/settings';
+          $uploads_folder =  getcwd() .'/uploads/settings/';
           if (!file_exists($uploads_folder)) {
               mkdir($uploads_folder, 0777, true);
           }
           $request->file('foundationLogo')->move($uploads_folder,    $image_full_name);
           $image = Image::make( public_path("uploads/settings/{$image_full_name}"))->fit(1200,1200);
           $image->save();
-          $setting->foundationLogo=$image_full_name;
+          $setting->foundationLogo= '/uploads/settings/'.$image_full_name;
       }
 
       $setting->foundationName       = $request->input('foundationName');
       $setting->foundationTitle      = $request->input('foundationTitle');
-      $setting->phoneNumber          =   $request->input('phoneNumber');
+      $setting->phoneNumber          = $request->input('phoneNumber');
       $setting->email                = $request->input('email');
+      $setting->facebook             = $request->input('facebook');
+      $setting->twitter              = $request->input('twitter');
+      $setting->instagram            = $request->input('instagram');
+      $setting->linkedin             = $request->input('linkedin');
       $setting->save();
       return redirect()->route('settings.index')->with('success','تم أضافة   بيانات الموقع بنجاح ');
 
@@ -130,7 +136,7 @@ class SettingsController extends Controller
       $request->validate([
           'foundationName'         => 'required|max:255',
           'foundationTitle'         => 'required|max:255',
-          'phoneNumber'            => 'required|numeric',
+          'phoneNumber'            => 'required',
            'email'                   => 'required',
           // 'foundationLogo'          => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
 
@@ -228,7 +234,7 @@ class SettingsController extends Controller
           $image_ext = $request->file('foundationLogo')->getClientOriginalExtension(); // example: png, jpg ... etc
           $image_full_name = $image_name . '.' . $image_ext;
 
-          $uploads_folder =  getcwd() .'/uploads/settings';
+          $uploads_folder =  getcwd() .'/uploads/settings/';
           if (!file_exists($uploads_folder)) {
               mkdir($uploads_folder, 0777, true);
           }
@@ -238,7 +244,7 @@ class SettingsController extends Controller
           \DB::table('settings')
           ->where('settingId',$id)
           ->update([
-            'foundationLogo'=>$image_full_name,
+            'foundationLogo'=> '/uploads/settings/'.$image_full_name,
           ]);
       }
 
@@ -250,6 +256,10 @@ class SettingsController extends Controller
         'foundationTitle' =>$request->input('foundationTitle'),
         'phoneNumber'     =>$request->input('phoneNumber'),
         'email'           =>$request->input('email'),
+        'linkedin'        =>$request->input('linkedin'),
+        'facebook'        =>$request->input('facebook'),
+        'instagram'       =>$request->input('instagram'),
+        'twitter'         =>$request->input('twitter'),
       ]);
 
       return redirect()->route('settings.index')->with('success','تم تحديث  الاعدادات بنجاح   ');

@@ -20,9 +20,8 @@ class ManageMoneyReportController extends Controller
  //all reportFiles
     public function allReportFiles ()
     {
-      $reportFiles = Money::all()->where('reportStatus',1);
       return view('pages.allreport')->with([
-        'reportFiles'=>$reportFiles,
+        'moneyreport'=>Money::where('reportStatus',1)->latest()->paginate(6)
       ]);
     }
   /**

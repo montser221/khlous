@@ -10,7 +10,7 @@ class AboutAssociation extends Model
     use HasFactory;
     protected $primaryKey ='associationId';
     protected $fillable = [
-      'associationTitle','managerWord','showInHome','managerName','associationIcon'
+     'about','location', 'associationTitle','managerWord','showInHome','managerName','associationIcon'
     ];
 
 }

@@ -26,6 +26,7 @@ class AboutAssociationController extends Controller
    */
   public function store(Request $request)
   {
+
 // 'associationTitle','managerWord','showInHome','managerName','associationIcon'
     $request->validate([
         'associationTitle'     => 'required',
@@ -33,6 +34,8 @@ class AboutAssociationController extends Controller
         'managerWord'          => 'required',
         'vison'                => 'required',
         'message'              => 'required',
+        'location'              => 'required',
+        'about'              => 'required',
        'associationIcon'       => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2028',
        'visonIcon'             => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2028',
        'messageIcon'           => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2028',
@@ -49,7 +52,39 @@ class AboutAssociationController extends Controller
     {
          $AboutAssociation->showInHome =1;
     }
+    //Store association message image
+    if($request->file('messageImage')){
 
+        $image_name = time() . rand(1,1000000000000);
+        $image_ext = $request->file('messageImage')->getClientOriginalExtension(); // example: png, jpg ... etc
+        $image_full_name = $image_name . '.' . $image_ext;
+
+        $uploads_folder =  getcwd() .'/uploads/aboutassoiation/';
+        if (!file_exists($uploads_folder)) {
+            mkdir($uploads_folder, 0777, true);
+        }
+        $request->file('messageImage')->move($uploads_folder,    $image_full_name);
+        $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
+        $image->save();
+        $AboutAssociation->messageImage='/uploads/aboutassoiation/'.$image_full_name;
+    }
+
+     //Store association message image
+     if($request->file('visonImage')){
+
+        $image_name = time() . rand(1,1000000000000);
+        $image_ext = $request->file('visonImage')->getClientOriginalExtension(); // example: png, jpg ... etc
+        $image_full_name = $image_name . '.' . $image_ext;
+
+        $uploads_folder =  getcwd() .'/uploads/aboutassoiation/';
+        if (!file_exists($uploads_folder)) {
+            mkdir($uploads_folder, 0777, true);
+        }
+        $request->file('visonImage')->move($uploads_folder,    $image_full_name);
+        $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
+        $image->save();
+        $AboutAssociation->visonImage='/uploads/aboutassoiation/'.$image_full_name;
+    }
     // // create project instance
     //Store association Icon
     if($request->file('associationIcon')){
@@ -65,7 +100,7 @@ class AboutAssociationController extends Controller
         $request->file('associationIcon')->move($uploads_folder,    $image_full_name);
         $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
         $image->save();
-        $AboutAssociation->associationIcon=$image_full_name;
+        $AboutAssociation->associationIcon='/uploads/aboutassoiation/'.$image_full_name;
     }
     //store vison icon
     if($request->file('visonIcon')){
@@ -81,7 +116,7 @@ class AboutAssociationController extends Controller
         $request->file('visonIcon')->move($uploads_folder,    $image_full_name);
         $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
         $image->save();
-        $AboutAssociation->visonIcon=$image_full_name;
+        $AboutAssociation->visonIcon='/uploads/aboutassoiation/'.$image_full_name;
     }
     //Store message Icon
     if($request->file('messageIcon')){
@@ -97,7 +132,7 @@ class AboutAssociationController extends Controller
         $request->file('messageIcon')->move($uploads_folder,    $image_full_name);
         $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
         $image->save();
-        $AboutAssociation->messageIcon=$image_full_name;
+        $AboutAssociation->messageIcon='/uploads/aboutassoiation/'.$image_full_name;
     }
 
 
@@ -105,6 +140,8 @@ class AboutAssociationController extends Controller
     $AboutAssociation->managerName      = $request->input('managerName');
     $AboutAssociation->managerWord      = $request->input('managerWord');
     $AboutAssociation->vison            = $request->input('vison');
+    $AboutAssociation->about            = $request->input('about');
+    $AboutAssociation->location            = $request->input('location');
     $AboutAssociation->message          = $request->input('message');
     $AboutAssociation->save();
     return redirect()->route('aboutassoiation.index')->with('success','تم أضافة بيانات الجمعية بنجاح');
@@ -131,6 +168,7 @@ class AboutAssociationController extends Controller
    */
   public function update(Request $request, $id)
   {
+
     if($request->has('associationStatus')){
 
         \DB::table('about_associations')
@@ -156,6 +194,48 @@ class AboutAssociationController extends Controller
         'showInHome'=>0,
       ]);
     }
+    //update message Image
+    if($request->file('messageImage')){
+      \Storage::delete(AboutAssociation::find($id)->messageImage);
+        $image_name = time() . rand(1,1000000000000);
+        $image_ext = $request->file('messageImage')->getClientOriginalExtension(); // example: png, jpg ... etc
+        $image_full_name = $image_name . '.' . $image_ext;
+
+        $uploads_folder =  getcwd() .'/uploads/aboutassoiation/';
+        if (!file_exists($uploads_folder)) {
+            mkdir($uploads_folder, 0777, true);
+        }
+        $request->file('messageImage')->move($uploads_folder,    $image_full_name);
+        $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
+        $image->save();
+        \DB::table('about_associations')
+        ->where('associationId',$id)
+        ->update([
+          'messageImage'=>'/uploads/aboutassoiation/'.$image_full_name,
+        ]);
+    }
+
+    //update vison Image
+    if($request->file('visonImage')){
+        \Storage::delete(AboutAssociation::find($id)->visonImage);
+          $image_name = time() . rand(1,1000000000000);
+          $image_ext = $request->file('visonImage')->getClientOriginalExtension(); // example: png, jpg ... etc
+          $image_full_name = $image_name . '.' . $image_ext;
+
+          $uploads_folder =  getcwd() .'/uploads/aboutassoiation/';
+          if (!file_exists($uploads_folder)) {
+              mkdir($uploads_folder, 0777, true);
+          }
+          $request->file('visonImage')->move($uploads_folder,    $image_full_name);
+          $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
+          $image->save();
+          \DB::table('about_associations')
+          ->where('associationId',$id)
+          ->update([
+            'visonImage'=>'/uploads/aboutassoiation/'.$image_full_name,
+          ]);
+      }
+
     //update vison icon
     if($request->file('visonIcon')){
       \Storage::delete(AboutAssociation::find($id)->visonIcon);
@@ -163,7 +243,7 @@ class AboutAssociationController extends Controller
         $image_ext = $request->file('visonIcon')->getClientOriginalExtension(); // example: png, jpg ... etc
         $image_full_name = $image_name . '.' . $image_ext;
 
-        $uploads_folder =  getcwd() .'/uploads/aboutassoiation';
+        $uploads_folder =  getcwd() .'/uploads/aboutassoiation/';
         if (!file_exists($uploads_folder)) {
             mkdir($uploads_folder, 0777, true);
         }
@@ -173,9 +253,10 @@ class AboutAssociationController extends Controller
         \DB::table('about_associations')
         ->where('associationId',$id)
         ->update([
-          'visonIcon'=>$image_full_name,
+          'visonIcon'=>'/uploads/aboutassoiation/'.$image_full_name,
         ]);
     }
+
     //update message Icon
     if($request->file('messageIcon')){
       \Storage::delete(AboutAssociation::find($id)->messageIcon);
@@ -183,7 +264,7 @@ class AboutAssociationController extends Controller
         $image_ext = $request->file('messageIcon')->getClientOriginalExtension(); // example: png, jpg ... etc
         $image_full_name = $image_name . '.' . $image_ext;
 
-        $uploads_folder =  getcwd() .'/uploads/aboutassoiation';
+        $uploads_folder =  getcwd() .'/uploads/aboutassoiation/';
         if (!file_exists($uploads_folder)) {
             mkdir($uploads_folder, 0777, true);
         }
@@ -193,7 +274,7 @@ class AboutAssociationController extends Controller
         \DB::table('about_associations')
         ->where('associationId',$id)
         ->update([
-          'messageIcon'=>$image_full_name,
+          'messageIcon'=>'/uploads/aboutassoiation/'.$image_full_name,
         ]);
     }
     if($request->file('associationIcon')){
@@ -212,7 +293,7 @@ class AboutAssociationController extends Controller
         \DB::table('about_associations')
         ->where('associationId',$id)
         ->update([
-          'associationIcon'=>$image_full_name,
+          'associationIcon'=>'/uploads/aboutassoiation/'.$image_full_name,
         ]);
     }
 
@@ -224,6 +305,8 @@ class AboutAssociationController extends Controller
       'managerWord'=>$request->input('managerWord'),
       'vison'=>$request->input('vison'),
       'message'=>$request->input('message'),
+      'about'=>$request->input('about'),
+      'location'=>$request->input('location'),
     ]);
 
     return redirect()->route('aboutassoiation.index')->with('success','تم تحديث  بيانات طريقة الدفع بنجاح');

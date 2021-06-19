@@ -10,7 +10,7 @@
     <div class="pay-Inner">
      <div class="container">
        <div class="page-path">
-           <p><a href="{{route('home')}}"> الرئيسية </a> تواصل معنا   </p>
+           <p><a href="{{route('/')}}"> الرئيسية </a> تواصل معنا   </p>
            <div class="h2" style="padding-bottom: 100px !important;">
              الاتصال بالمؤسسة
            </div>
@@ -21,12 +21,12 @@
    <!--//Banner-->
   <div class="container">
     <div class="contact-us">
-    
+
       @include('includes.success')
       <div class="row">
         <div class="col-sm-6">
-         
-          <div class="h2 text-right center-phone">تواصل معنا  </div>
+
+          <div class="h2 text-right center-phone" style="color: var(--main-color)">تواصل معنا  </div>
           <div class="word-title text-center center-phone">
               <div class="text-right mt-3 mb-4 center-phone"><img src="{{url('design/shape.png')}}"></div>
 
@@ -53,22 +53,22 @@
             @enderror
             </div>
             <div class="form-inline">
-              <input 
-                  class="form-control w-49  fullname"   
-                  type="text" 
-                  placeholder="الاسم الكامل"  
-                  value="{{old('fullName')}}" 
+              <input
+                  class="form-control w-49  fullname"
+                  type="text"
+                  placeholder="الاسم الكامل"
+                  value="{{old('fullName')}}"
                   name="fullName"  >
               @error('fullName')
               <div class="alert alert-danger mt-2">
                 {{$message}}
               </div>
             @enderror
-              <input 
-              class="form-control w-49  email"  
-              type="text" 
-              placeholder="البريد الالكتروني" 
-              value="{{old('email')}}" 
+              <input
+              class="form-control w-49  email"
+              type="text"
+              placeholder="البريد الالكتروني"
+              value="{{old('email')}}"
               name="email"  >
              @error('email')
               <div class="alert alert-danger mt-2">
@@ -100,6 +100,6 @@
   </div>
 </div>
 <!-- End Contact Us -->
-   
+
 {{-- include footer --}}
 @include('includes.footer')

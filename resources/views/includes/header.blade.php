@@ -1,8 +1,8 @@
 {{-- Start Header --}}
 <!-- Strt header top -->
 <?php
-$data = \App\Models\Settings::find(1);
-$otherFiles = \App\Models\OtherMember::all();
+
+$otherFiles = \App\Models\OtherMember::latest()->take(10)->get();
  ?>
 
 
@@ -19,10 +19,10 @@ $otherFiles = \App\Models\OtherMember::all();
 </svg>
                حساب الزكاة</a>
             </li>
-          <li>
+          {{-- <li>
               <i class="fa fa-user" aria-hidden="true"></i>
             <a target="_blank" href="{{ route('login') }}" >تسجيل دخول</a>
-          </li>
+          </li> --}}
         </ul>
        </div>
        <div class="col-lg-4 line-fix col-sm-6" >
@@ -38,11 +38,11 @@ $otherFiles = \App\Models\OtherMember::all();
 
 
           <div class="top-mail">
-                   <a href="mailto:{{$data->email ?? ' '}}"> {{$data->email ?? ''}}</a>
+                   <a href="mailto:{{$settingsdata->email ?? ' '}}"> {{$settingsdata->email ?? ''}}</a>
                <i class="fa fa-envelope" aria-hidden="true"></i>
           </div>
           <div class="top-tel">
-               | <a href="tel:+055 283-1282" dir="ltr"> {{$data->phoneNumber ?? ''}}</a>
+               | <a href="tel:{{$settingsdata->phoneNumber ?? ''}}" dir="ltr"> {{$settingsdata->phoneNumber ?? ''}}</a>
                <i class="fa fa-phone" aria-hidden="true"></i>
           </div>
 
@@ -67,8 +67,9 @@ $otherFiles = \App\Models\OtherMember::all();
     <div class="col-lg-10">
       <nav class="navbar navbar-expand-lg navbar-light">
 
-        <a class="navbar-brand" href="{{route("home")}}" {{$data->foundationName  ?? ' '}} >
-          <img class="brand-img"  src="@if( isset($data->foundationLogo) ) {{url( "uploads/settings/". $data->foundationLogo )}}
+        <a class="navbar-brand" href="{{route("/")}}" {{$settingsdata->foundationName  ?? ' '}} >
+          <img class="brand-img" style="max-width: 100px;border-radius: 50%;"
+          src="@if( isset($settingsdata->foundationLogo) ) {{url( $settingsdata->foundationLogo )}}
           @else alt=""
           @endif " class="dashboard-logo"  >
 
@@ -82,7 +83,7 @@ $otherFiles = \App\Models\OtherMember::all();
 
 
             <li class="nav-item active">
-              <a class="nav-link" href="{{route("home")}}">الرئيسية <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{route("/")}}">الرئيسية <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -103,11 +104,6 @@ $otherFiles = \App\Models\OtherMember::all();
             <li class="nav-item">
               <a href="{{route('ourproject')}}" class="nav-link">مشاريعنا</a>
             </li>
-
-            {{-- <li class="nav-item">
-              <a href="{{route('urgentproject')}}" class="nav-link">م علجلة</a>
-            </li> --}}
-
 
             <li class="nav-item">
               <a href="{{route('paymethod')}}" class="nav-link">طرق التبرع</a>
@@ -134,16 +130,13 @@ $otherFiles = \App\Models\OtherMember::all();
                الخدمات الالكترونية
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkSer">
-                  <a class="dropdown-item" href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAZ__vK183RUOFFDVzYxRlc0UEJRTDlNWTVTRDQzUDE2WC4u">   طلب عضو منتسب </a>
-                  <a class="dropdown-item" href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAZ__vK183RURjJWR1k1TUNKVVo4SFMzRlFOWVBaNjJZSC4u"> طلب عضو عامل   </a>
-                  <a class="dropdown-item" target="_blank" href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAZ__vK183RUODY0U05IMExGSFdXR0I0MVZNTUVVOFA3NC4u">  تقييم رضا المستفيدين والعملاء  </a>
-                  <a class="dropdown-item" href="{{route("voluntary.index")}}"> بوابة المتطوعين</a>
+                 <a class="dropdown-item" href="{{route("voluntary.index")}}"> بوابة المتطوعين</a>
                   <a class="dropdown-item" href="{{route('benfit.index')}}"> تسجيل مستفيد</a>
                   <a class="dropdown-item" href="{{route('dulni.index')}}">دلني على محتاج</a>
               </div>
            </li>
             <li class="nav-item">
-              <a href="{{route('contact.index')}}" class="nav-link"> 
+              <a href="{{route('contact.index')}}" class="nav-link">
                  الاتصال بالجمعية
               </a>
             </li>

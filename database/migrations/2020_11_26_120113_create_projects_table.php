@@ -23,7 +23,6 @@ class CreateProjectsTable extends Migration
             $table->string('projectLocation');
             $table->string('projectIcon');
             $table->string('projectImage');
-            $table->string('projectWrapper');
             $table->text('projectText');
             $table->unsignedBigInteger('projectCost')->default(0);
             $table->tinyInteger('projectStatus')->default(0);

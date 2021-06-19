@@ -14,8 +14,9 @@ class ProjectsCategories extends Model
       'categoryName',
     ];
 
-    public function project()
+
+    public function projects()
     {
-      return $this->hasMany('App\Models\Projects','projectCategoryId','categoryId');
-    } 
+    	return $this->hasMany('App\Models\Projects','projectCategoryId','projectId');
+    }
 }

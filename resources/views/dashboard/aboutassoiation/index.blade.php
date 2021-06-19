@@ -115,25 +115,62 @@
 
                 </div>
 
-                <div class="form-row">
 
-                  <div class="col">
+                    <div class="form-row">
 
-                    <label class="label-control" for="managerWord"> كلمة الرئيس   </label>
+                    <div class="col">
 
-                  <textarea class="form-control" name="managerWord" rows="5" cols="80" placeholder="أكتب كلمة الرئيس هنا"></textarea>
+                      <label class="label-control" for="managerWord"> كلمة الرئيس   </label>
 
-                  </div>
+                    <textarea
+                    class="form-control w-100 mr-0"
+                    name="managerWord"
+                    rows="5"
+                    cols="90"
+                     placeholder="أكتب كلمة الرئيس هنا"></textarea>
 
-                  <div class="col">
-
-                    <label class="label-control" for="associationIcon"> الايقونة   </label>
-
-                    <input class="form-control-file" style="margin-right: 10%;" id="associationIcon" type="file" name="associationIcon" class="form-control w-80"  >
-
-                  </div>
+                    </div>
 
                 </div>
+                <div class="form-row">
+
+                    <div class="col">
+
+                        <label class="label-control" for="about">  وصف الجمعية   </label>
+
+                      <textarea
+                      class="form-control w-100 mr-0"
+                      name="about" rows="5"
+                      cols="90"
+                      placeholder="أكتب  وصف الجمعية هنا"></textarea>
+
+                      </div>
+                </div>
+                <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
+
+                <div class="form-row">
+                    <div class="col mt-3">
+
+                        <label class="label-control" for="associationIcon"> أيقونة الجمعية   </label>
+
+                        <input class="form-control-file" style="" id="associationIcon" type="file" name="associationIcon" class="form-control w-80"  >
+
+                      </div>
+                    <div class="col">
+
+                        <label class="label-control" for="location"> مكان الجمعية   </label>
+
+                        <input class="form-control"
+                        style="margin-right: 10%;"
+                        id="location"
+                        type="text"
+                        placeholder="المدينة/الرياض ..."
+                        name="location"
+                        class="form-control w-80"  >
+
+                      </div>
+                </div>
+                <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
 
                 <div class="form-row">
 
@@ -154,10 +191,45 @@
                   </div>
 
                 </div>
-
-
+                <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
 
                 <div class="form-row">
+
+
+                    <div class="col">
+
+                      <label class="label-control mt-2" for="messageImage">  خلفية الرسالة </label>
+
+                     <input
+                     class="form-control-file"
+                     style="margin-right: 10%;"
+                     id="messageImage"
+                      type="file"
+                     name="messageImage"
+                     class="form-control w-80"  >
+
+                    </div>
+
+                    <div class="col">
+
+                      <label class="label-control mt-2" for="visonImage"> خلفية الرؤية   </label>
+
+                      <input
+                      class="form-control-file"
+                      style="margin-right: 10%;"
+                       id="visonImage"
+                        type="file"
+                        name="visonImage"
+                         class="form-control w-80"  >
+
+                    </div>
+
+
+                  </div>
+                  <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
+
+                <div class="form-row">
+
 
                   <div class="col">
 
@@ -175,7 +247,9 @@
 
                   </div>
 
+
                 </div>
+                <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
 
                 <div class="form-row">
 
@@ -221,6 +295,7 @@
 
                 </div>
 
+                <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
 
 
             <div class="modal-footer">
@@ -289,11 +364,11 @@
 
               <td>{{  $about->associationTitle }}</td>
 
-              <td><img class="img-responsive img-thambnail" style="max-width:40px" src="{{  url('uploads/aboutassoiation/'.$about->associationIcon )}}" alt="" /></td>
+              <td><img class="img-responsive img-thambnail" style="max-width:40px" src="{{  url($about->associationIcon )}}" alt="" /></td>
 
-              <td><img class="img-responsive img-thambnail" style="max-width:40px" src="{{  url('uploads/aboutassoiation/'.$about->visonIcon )}}" alt="" /></td>
+              <td><img class="img-responsive img-thambnail" style="max-width:40px" src="{{  url($about->visonIcon )}}" alt="" /></td>
 
-              <td><img class="img-responsive img-thambnail" style="max-width:40px" src="{{  url('uploads/aboutassoiation/'.$about->messageIcon )}}" alt="" /></td>
+              <td><img class="img-responsive img-thambnail" style="max-width:40px" src="{{  url($about->messageIcon )}}" alt="" /></td>
 
               <td>{{  $about->managerName }}</td>
 

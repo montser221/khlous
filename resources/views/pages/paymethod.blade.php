@@ -8,7 +8,7 @@
     <div class="pay-Inner">
      <div class="container">
        <div class="page-path">
-           <p><a href="{{route('home')}}"> الرئيسية </a>/ طرق التبرع </p>
+           <p><a href="{{route('/')}}"> الرئيسية </a>/ طرق التبرع </p>
        </div>
      </div>
    </div>
@@ -25,7 +25,7 @@
     </div>
     <div class="row">
       @foreach ($paymethod as $method)
-      
+
       <div class="col-md-4 col-sm-6  ">
         <div class="method text-center mt-5">
           <img class="rounded-circle mt-3 mb-4 " style="min-height: 120px;max-height: 120px;max-width:120px;max-height:120px; "  src="{{url('uploads/paymentmethod/'.$method->methodImage	)}}" alt="">

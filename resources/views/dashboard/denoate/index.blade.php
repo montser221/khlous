@@ -173,11 +173,11 @@
           @foreach ($allDenoate as $denoate)
             <tr>
               <td> رقم  {{$denoate->denoateId}}  </td>
-              <td>{{\App\Models\Projects::find($denoate->projectTable)->projectName}}</td>
+              <td>{{$denoate->projects->projectName}}</td>
               <td>{{  $denoate->denoateName}}</td>
               <td>{{$denoate->denoatePhone}}</td>
               <td>{{$denoate->moneyValue}} <span>SAR</span> </td>
-              <td>{{\App\Models\PaymentMethod::find($denoate->paymentMethodTable)->methodName}}</td>
+              <td>{{$denoate->pmethods->methodName}}</td>
               <td>{{$denoate->created_at}}</td>
               <td class="@if ($denoate->denoateStatus==1) text-success  @else text-danger   @endif">
                 @if ($denoate->denoateStatus==1)

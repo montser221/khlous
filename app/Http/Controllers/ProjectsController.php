@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\DenoateExample;
 use Intervention\Image\Facades\Image;
 class ProjectsController extends Controller
-{ 
+{
 
     /**
      * Display a listing of the resource.
@@ -17,26 +17,17 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $allprojects = Projects::with(['arrow','denoate'])->latest()->whereNotIn('projectCategoryId',[3])->paginate(10);
-        return view('dashboard.projects.index')->with(['allprojects'=>$allprojects]);
+        return view('dashboard.projects.index');
     }
 
       public function customProjectDetail()
     {
-
-      // $customProject =  \DB::table('projects')
-      // ->whereIn('projectId',[10002, 10103])
-      // ->where('projectId', 10002)
-      // ->get();
-
-      $customProject = Projects::orderBy('projectId','desc')->whereIn('projectId',[2,3])->get();
-      // ->where('projectId',10103)->where('projectId',10002);
       return view('pages.customProject')
       ->with([
-        'customProject'=>$customProject
+        'customProject'=>Projects::orderBy('projectId','desc')->whereIn('projectId',[2,3])->get()
         ]);
     }
-     
+
     /**
      * Store a newly created resource in storage.
      *
@@ -46,7 +37,7 @@ class ProjectsController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-       
+
           'projectName'        => 'required|unique:projects|max:255',
         //   'projectCategoryId'  => 'required|numeric',
           'projectDesc'        => 'required',
@@ -78,11 +69,11 @@ class ProjectsController extends Controller
           if (!file_exists($uploads_folder)) {
               mkdir($uploads_folder, 0777, true);
           }
-        
+
           $request->file('projectIcon')->move($uploads_folder,$image_full_name);
           $image = Image::make( $uploads_folder . $image_full_name )->fit(1200,1200);
           $image->save();
-          $project->projectIcon=$image_full_name;
+          $project->projectIcon=$uploads_folder.$image_full_name;
       }
       // upload project image and store it in database
       if($request->file('projectImage')){
@@ -94,13 +85,13 @@ class ProjectsController extends Controller
           if (!file_exists($uploads_folder)) {
               mkdir($uploads_folder, 0777, true);
           }
-   
-          $request->file('projectImage')->move($uploads_folder,$image_full_name);
-          $image = Image::make( $uploads_folder .$image_full_name)->fit(1700,700);
-          $image->save();
-       
 
-          $project->projectImage=$image_full_name;
+          $request->file('projectImage')->move($uploads_folder,$image_full_name);
+          $image = Image::make( $uploads_folder .$image_full_name)->fit(1200,800);
+          $image->save();
+
+
+          $project->projectImage=$uploads_folder.$image_full_name;
 
       }
         // upload project wrapper and store it in database
@@ -137,14 +128,14 @@ class ProjectsController extends Controller
     public function update(Request $request, $id)
     {
       $request->validate([
-       
+
         //   'projectCategoryId'  => 'required|numeric',
           'projectDesc'        => 'required',
           'projectText'        => 'required',
           'projectLocation'    => 'required',
           'projectCost'        => 'required|numeric',
       ]);
-      
+
       // check if project status checked or not
       if($request->has('projectStatus') )
       {
@@ -185,7 +176,7 @@ class ProjectsController extends Controller
           \DB::table('projects')
           ->where('projectId',$id)
           ->update([
-            'projectIcon'=>$image_full_name,
+            'projectIcon'=> $uploads_folder . $image_full_name,
           ]);
       }
       // upload project image and store it in database
@@ -199,15 +190,15 @@ class ProjectsController extends Controller
               mkdir($uploads_folder, 0777, true);
           }
           $request->file('projectImage')->move($uploads_folder,$image_full_name);
-          $image = Image::make( $uploads_folder . $image_full_name )->fit(1700,700);
+          $image = Image::make( $uploads_folder . $image_full_name )->fit(1200,800);
           $image->save();
           \DB::table('projects')
           ->where('projectId',$id)
           ->update([
-            'projectImage'=>$image_full_name,
+            'projectImage'=> $uploads_folder. $image_full_name,
           ]);
       }
-        
+
 
       \DB::table('projects')
       ->where('projectId',$id)
@@ -240,9 +231,9 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-   
+
       if(intval($id)){
-     
+
         \DB::table('projects')
         ->where('projectId',$id)
         ->delete();

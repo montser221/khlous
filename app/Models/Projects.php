@@ -22,20 +22,21 @@ class Projects extends Model
       'projectText',
       'projectStatus'
     ];
- 
+
     public function denoate()
     {
       return $this->hasMany( DenoatePayDetail::class,'projectTable','projectId');
-    } 
+    }
+
 
     public function pcategory()
     {
-      return $this->hasMany(ProjectsCategories::class,'projectCategoryId','categoryId');
+      return $this->belongsTo(ProjectsCategories::class,'projectCategoryId','categoryId');
     }
-    
+
     public function arrow()
     {
-        return $this->hasMany(Arrow::class,'projectTable','projectId');  
+        return $this->hasMany(Arrow::class,'projectTable','projectId');
     }
 
 }

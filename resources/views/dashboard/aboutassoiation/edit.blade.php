@@ -47,6 +47,7 @@
             <input id="inputmethodName" type="text" name="associationTitle" class="form-control w-40" value="{{$data->associationTitle ?? ''}}">
 
           </div>
+          <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
 
           <div class="col">
 
@@ -57,6 +58,7 @@
           </div>
 
         </div>
+        <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
 
         <div class="form-row">
 
@@ -64,21 +66,61 @@
 
             <label class="label-control" for="managerWord"> كلمة الرئيس   </label>
 
-          <textarea class="form-control" name="managerWord" rows="4" cols="40"> {{$data->managerWord ?? ''}}</textarea>
-
-          </div>
-
-          <div class="col">
-
-            <label class="label-control" for="associationIcon"> الايقونة   </label>
-
-            <input class="form-control-file"   id="associationIcon" type="file" name="associationIcon" class="form-control w-80"  >
+          <textarea
+           class="form-control w-100"
+          name="managerWord"
+          rows="4" cols="40">
+          {{$data->managerWord ?? ''}}</textarea>
 
           </div>
 
         </div>
+        <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
 
 
+        <div class="form-row">
+            <div class="col">
+
+                <label class="label-control" for="about">  وصف الجمعية   </label>
+
+              <textarea
+               class="form-control w-100 mr-0"
+              name="about" rows="5"
+              cols="80"
+             >
+             {{$data->about}}
+            </textarea>
+
+              </div>
+
+        </div>
+        <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
+
+        <div  class="form-row">
+              <div class="col">
+
+                <label class="label-control" for="associationIcon"> الايقونة   </label>
+
+                <input class="form-control-file"   id="associationIcon" type="file" name="associationIcon" class="form-control w-80"  >
+
+              </div>
+              <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
+
+            <div class="col">
+
+                <label class="label-control" for="location"> مكان الجمعية   </label>
+
+                <input
+                 class="form-control"
+                style="margin-right: 10%;"
+                 id="location" type="text"
+                 name="location"
+                 value="{{$data->location}}"
+                 class="form-control w-80"  >
+
+              </div>
+        </div>
+        <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
 
         <div class="form-row">
 
@@ -89,6 +131,7 @@
             <textarea    class="form-control" name="vison" rows="5" cols="40" placeholder="أكتب الرؤية هنا"> {{$data->vison ?? ''}} </textarea>
 
           </div>
+          <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
 
           <div class="col">
 
@@ -99,8 +142,41 @@
           </div>
 
         </div>
+        <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
+
+        <div class="form-row">
 
 
+            <div class="col">
+
+              <label class="label-control mt-2" for="messageImage">  خلفية الرسالة </label>
+
+             <input
+             class="form-control-file"
+             id="messageImage"
+              type="file"
+              name="messageImage"
+              class="form-control w-80"  >
+
+            </div>
+            <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
+
+            <div class="col">
+
+              <label class="label-control mt-2" for="visonImage"> خلفية الرؤية   </label>
+
+              <input
+              class="form-control-file"
+               id="visonImage"
+               type="file"
+               name="visonImage"
+               class="form-control w-80"  >
+
+            </div>
+
+
+          </div>
+          <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
 
         <div class="form-row">
 
@@ -111,6 +187,7 @@
            <input class="form-control-file"   id="messageIcon" type="file" name="messageIcon" class="form-control w-80"  >
 
           </div>
+          <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
 
           <div class="col">
 
@@ -121,6 +198,7 @@
           </div>
 
         </div>
+        <div class="main-color mt-4 mb-4" style="border-bottom:4px solid "></div>
 
 
 

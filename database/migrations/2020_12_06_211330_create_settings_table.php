@@ -21,6 +21,10 @@ class CreateSettingsTable extends Migration
             $table->string('phone1')->nullable();
             $table->string('phone2')->nullable();
             $table->string('phone3')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('linkedin')->nullable();
             $table->string('phoneNumber');
             $table->string('fax')->nullable();
             $table->string('foundationLogo')->nullable();

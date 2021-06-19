@@ -13,27 +13,27 @@ use Moyasar\Providers\PaymentService;
 class DenoateController extends Controller
 {
   public function index(){
-    $allDenoate = DenoatePayDetail::latest()->paginate(9);
+    $allDenoate = DenoatePayDetail::with('pmethods','projects')->latest()->paginate(9);
       return view('dashboard.denoate.index')->with([
         'allDenoate'=>$allDenoate,
       ]);
   }
   public function payments(Request $request){
-    
+
     if($request->status == 'failed'){
 
       return redirect()->route('cart')->with('error','عفوا لم تتم العملية بنجاح الرجاء');
-     
+
     }else if($request->status == 'paid'){
 
-      \Moyasar\Moyasar::setApiKey("sk_live_qXRKzZaXCSnnRZXr9TnNYbr5jm2ZcdyUYSbQJZHy"); 
+      \Moyasar\Moyasar::setApiKey("sk_live_qXRKzZaXCSnnRZXr9TnNYbr5jm2ZcdyUYSbQJZHy");
 
       $paymentService = new \Moyasar\Providers\PaymentService();
-      
+
       $payment = $paymentService->fetch($request->id);
-  
+
       $name = $payment->source->name;
-  
+
       $company_name = $payment->source->company;
 
       $items = session()->get('cart');
@@ -43,9 +43,9 @@ class DenoateController extends Controller
             foreach ($cart as $c){
               $projectTable =  $c['projectId'];
               $moneyValue =  $c['den'];
-              
+
               $denoate = new DenoatePayDetail;
-  
+
               $denoate->projectTable = $projectTable;
               $denoate->denoateName = $name;
               $denoate->denoatePhone = '099999';
@@ -54,13 +54,13 @@ class DenoateController extends Controller
               $denoate->moneyValue = $moneyValue;
               $denoate->denoateStatus =1;
               $denoate->save();
-       
+
             }
         }
       }
       session()->flush('cart');
       return redirect()->route('cart')->with('success','تم التبرع بنجاح');
-             
+
     }
   }
 
@@ -91,7 +91,7 @@ class DenoateController extends Controller
 
   public function store(Request $request)
   {
-      
+
       $request->validate([
         'projectTable'        => 'required',
         'denoateName'        => 'required',

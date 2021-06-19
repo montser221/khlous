@@ -23,6 +23,8 @@ class CreateAboutAssociationsTable extends Migration
             $table->string('associationIcon')->nullable();
             $table->string('visonIcon')->nullable();
             $table->string('messageIcon')->nullable();
+            $table->text('about',400)->nullable();
+            $table->string('location')->nullable();
             $table->tinyInteger('associationStatus')->default(0);
             $table->tinyInteger('showInHome')->default(0);
             $table->timestamps();

@@ -81,7 +81,12 @@
               </div>
             @enderror
                   </div>
-                  <button class="btn btn-primary btn-lg position-fix  mx-auto" type="submit">إرسال</button>
+                  <button
+                  class="btn  btn-lg position-fix  mx-auto"
+                  style="    background: linear-gradient(rgba(21, 168, 148, 0.80) , rgba(21, 144, 127, 0.80) );
+                  color: #fff;"
+                  type="submit">إرسال
+                </button>
               </form>
           </div>
       </div>

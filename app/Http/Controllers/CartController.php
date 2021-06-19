@@ -23,25 +23,25 @@ class CartController extends Controller
       {
         if($request->zakat=="true")
           return redirect()->route('zakat');
-      } 
+      }
       else if($request->has('customproject'))
       {
         if($request->customproject=="true")
           return redirect()->route('customProjectDetail');
-      } 
+      }
       else if($request->has('projectDetail'))
       {
         if($request->projectDetail=="true")
           return redirect()->route('projectDetail',$request->pid);
-      } 
+      }
       else
       {
 
-        return redirect()->route('home');
+        return redirect()->route('/');
       }
 
   }
-  
+
    public function addToCartNow(Request $request , $id)
   {
     $request->validate([
@@ -56,7 +56,7 @@ class CartController extends Controller
         return redirect()->route('cart');
 
   }
-  
+
 
   public function destory ($id)
   {

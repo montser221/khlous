@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 
-
 @section('title','من نحن')
-
 
 
 @include('includes.header')
@@ -22,7 +20,7 @@
 
        <div class="page-path">
 
-           <p><a href="{{route('home')}}"> الرئيسية </a> /  من نحن </p>
+           <p><a href="{{route('/')}}"> الرئيسية </a> /  من نحن </p>
 
            <div class="h2" style="padding-bottom: 100px !important;">
 
@@ -74,11 +72,6 @@
 
             @endisset
 
-
-
-            {{-- </div>
-
-            <div class="col-sm-12  col-md-6 col-lg-5 word-text" style="color:#777"> --}}
 
 
 
@@ -136,7 +129,18 @@
 
     <div class="col-sm-12 col-md-5 mb-5">
 
-      <div class="back-vison">
+      <div class="back-vison"
+      style="@if($aboutassociation->visonImage)
+        background:url('{{ $aboutassociation->visonImage }}') !important;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+        width: 500px;
+         @else
+          background:var(--secondary-color);
+          width:500px;
+         @endif">
 
       <div class="  vison">
 
@@ -144,7 +148,7 @@
 
 
 
-        <img src="{{ url("uploads/aboutassoiation/".$aboutassociation->visonIcon ) ?? ''}}" alt="">
+        <img src="{{ url($aboutassociation->visonIcon ) ?? ''}}" alt="">
 
       @endisset
 
@@ -176,13 +180,24 @@
 
       <div class="col-sm-12 col-md-5 mb-5">
 
-      <div class="back-message">
+      <div class="back-message"
+      style="@isset( $aboutassociation->messageImage)
+        background:url('{{$aboutassociation->messageImage }}') !important;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+        width: 500px;
+         @else
+          background:var(--secondary-color);
+          width:500px;
+         @endisset">
 
       <div class="  message">
 
         @isset($aboutassociation)
 
-        <img src="{{url("uploads/aboutassoiation/".$aboutassociation->messageIcon ?? '')}}" alt="">
+        <img src="{{url($aboutassociation->messageIcon ?? '')}}" alt="">
 
       @endisset
 
@@ -314,7 +329,7 @@
     أهدافنا
 
   </div>
-  
+
  <div class="text-center  mb-5" style="    margin-left: calc(63% - 50%);"><img src="{{url('design/shape.png')}}"></div>
   <div class="container">
 
@@ -380,26 +395,26 @@
     <div class="row">
     <?php $i=0;  ?>
       @foreach ($members as $member)
-  
+
 
       <div class="@if($member->memberId==1) col-sm-8 offset-sm-2 @else col-md-4 offset-md-0 @endif  text-center">
 
         <img class="img-fix mt-5" style="max-width: 150px; width: 130px; height: 130px; max-height:150px; border-radius: 50%" src="{{url('uploads/members/'.$member->memberImage)}}" alt="">
-        
+
         <div class="contact mt-3 d-inline-flex">
-        
+
         @if ($member->memberEmail !="")
             <a class="ml-3" target="_blank" href="https://wa.me/{{$member->memberPhone ?? ''}}&text">
            <img style="width: 50px;" src="{{url('design/icons/whatsapp.png')}}" />
           </a>
         @endif
         @if ($member->memberPhone !="")
-           <a href="mailto:{{$member->memberEmail}}" 
+           <a href="mailto:{{$member->memberEmail}}"
               style="background-color: #2fa89c;color: #fff;width: 66px;height: 52px;border-radius: 16px;">
             <i class="fa fa-envelope fa-3x" aria-hidden="true"></i>
             </a>
-              
-        @endif 
+
+        @endif
         </div>
 
         <div class="h4    mt-4 mb-4"> {{ $member->memberName }}</div>
@@ -411,7 +426,7 @@
     <?php $i++;  ?>
 
   @endforeach
- 
+
 
       {{-- <div class="col-sm-4 offset-sm-2 ">
 
@@ -514,14 +529,14 @@
                 @if($attend->day==3)
                 الثلاثاء
                 @endif
-                
+
                 @if($attend->day==4)
                 الأربعاء
                 @endif
                 @if($attend->day==5)
                 الخميس
                 @endif
-                
+
                 @if($attend->day==6)
                 الجمعة
                 @endif

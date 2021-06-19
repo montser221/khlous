@@ -27,7 +27,7 @@
 @endforeach
 
 <style type="text/css">
-.our-projects .all-projects 
+.our-projects .all-projects
 {
 
     padding-bottom: 10px;
@@ -41,13 +41,13 @@
     margin-left: 15px;
     padding-top: 11px;
     max-width: 30% !important;
-}  
+}
 
- 
-.our-projects .all-projects img 
+
+.our-projects .all-projects img
 {
       max-width: 100%;
-} 
+}
 
 .our-projects   .denoate-now
 {
@@ -63,17 +63,17 @@
     padding-left: 12px;
     padding-right: 15px;
 }
-.our-projects   .to-basket 
+.our-projects   .to-basket
 {
     border: none;
     padding: 12px;
     background-color: #8eb527;
     color: #FFF;
-     padding: 8px; 
+     padding: 8px;
     font-size: 13px;
     border-radius: 6px;
 }
-.our-projects   .input-denoate 
+.our-projects   .input-denoate
 {
   padding-bottom: 5px !important;
     border-radius: 5px;
@@ -103,7 +103,7 @@
 
 @media (max-width:576px)
  {
- 
+
 .our-projects .all-projects {
     max-width: 95% !important;
     margin-right: 10px !important;
@@ -115,7 +115,7 @@
 @media(min-width: 768px) and (max-width: 991px)
 
 {
-  .our-projects .project-buttons button 
+  .our-projects .project-buttons button
   {
       margin-top: 2px;
       border-radius: 30px !important;
@@ -151,13 +151,13 @@
 
   @endif
 
- 
+
 
       <div class="row">
-  
+
         @foreach ($urgentprojects as $project)
 
-  
+
 
         <div class="all-projects col-md-4 col-sm-6">
 
@@ -183,10 +183,10 @@
 
           <div class="btn  btn-lg d-block button-custom btn-active " style="direction: ltr;">
 
- 
-            </strong> {{number_format($project->projectCost,0) ?? 0}} </strong>  <strong> SAR</strong> 
 
-     
+            </strong> {{number_format($project->projectCost,0) ?? 0}} </strong>  <strong> SAR</strong>
+
+
           </div>
 
 
@@ -210,8 +210,8 @@
             <span style="font-size: 12px; margin-left: 10px;">باقي للتبرع:</span>
              <small style="margin-left: 5px"> SAR</small>
               <small style="margin-left: 5px">@if($getAllDenoate >= $project->projectCost ) 0 @else {{ $project->projectCost - $getAllDenoate }} @endif </small>
-          </div>        
-          
+          </div>
+
           <div class="progress mb-5"  data-toggle="tooltip"  offset="2" data-placement="top" title="@if($getAllDenoate >= $project->projectCost ) {{  $project->projectCost }} @else  {{ number_format( $getAllDenoate ,0)}} @endif SAR ">
             <div class="progress-bar" role="progressbar"
 
@@ -223,29 +223,29 @@
 
           <div class="project-buttons" id="our-projects-buttons">
             <small class="d-block text-gray mb-2 mt-4"> أختيار مبلغ التبرع </small>
-            <?php 
+            <?php
                 $arr = \App\Models\Arrow::all()->where('projectTable',$project->projectId)->where('arrowStatus',1);
 
                 $count_arr = $arr->count();
-              
+
                 ?>
                 @if($count_arr <= 0)
 
                 @else
                  <?php
                   foreach($arr as $a)
-     
+
                   {?>
               <button    class="c-b">
                   {{ $a->arrowName }} / {{ $a->arrowValue }} ريال
                 <input class="ourArrVal" type="hidden"  value="{{ $a->arrowValue }}" />
-              </button> 
+              </button>
              <?php
               }
               ?>
-              
+
             @endif
-           
+
           </div>
 
 
@@ -264,7 +264,7 @@
           @csrf
           @method('post')
           <input type="hidden"  name="dnow"  class="dnow" value="" >
-          <button  style="padding:10px;border:0" class="btn-denoate oprojecstnow" 
+          <button  style="padding:10px;border:0" class="btn-denoate oprojecstnow"
           type="submit">تبرع الآن </button>
         </form>
           </div>

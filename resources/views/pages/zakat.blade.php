@@ -10,7 +10,7 @@
     <div class="z-inner">
      <div class="container">
        <div class="page-path">
-           <p><a href="{{route('home')}}"> الرئيسية / </a> حساب الزكاة   </p>
+           <p><a href="{{route('/')}}"> الرئيسية / </a> حساب الزكاة   </p>
            <div class="h2" style="padding-bottom: 100px !important;">
             أداة حساب الزكاة
            </div>
@@ -31,7 +31,8 @@
         </div>
 
         <div class="col-sm-12 ">
-          <form class="form-contact" action="{{route('addToCart',28)}}" method="post">
+
+          <form class="form-contact" action="{{route('addToCart',0)}}" method="post">
             @csrf
             @method('post')
             <input type="hidden" name="zakat" value="true"/>
@@ -52,7 +53,7 @@
                </button>
             <a class="btn zakat-btn btn-lg btn-fix" href="{{route('cart')}}">     أخرج زكاتك</a>
           </form>
-        </div> 
+        </div>
       </div>
     </div>
   </div>

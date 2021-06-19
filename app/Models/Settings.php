@@ -18,7 +18,7 @@ class Settings extends Model
       'phone3',
       'phoneNumber',
       'fax',
-      'foundationLogo',
+      '/',
       'siteStatus',
       'jobsStatus',
       'keywords',

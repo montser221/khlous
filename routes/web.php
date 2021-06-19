@@ -1,25 +1,29 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
-// Route::pattern('');
+use Illuminate\Database\Eloquent\Factories\Sequence;
+
+Route::get('/',[App\Http\Controllers\MainController::class,'index'])->name('/');
+
+
 Route::get('viewFile',[App\Http\Controllers\ViewFileController::class,'viewFile'])->name('viewFile');
 Route::get('exportNeedy',function(){
     return Excel::download(new App\Exports\Needy(), 'needy_'.date('Y-M-D').'.xlsx');
 });
+
 Route::get('exportApplicable',function(){
     return Excel::download(new App\Exports\Applicable(), 'Applicable_'.date('Y-M-D').'.xlsx');
 });
 Route::get('exportVolntry',function(){
     return Excel::download(new App\Exports\Volntry(), 'Volntry_'.date('Y-M-D').'.xlsx');
 });
+
 // associcFiles
 Route::get('allreports',[App\Http\Controllers\publicReportController::class,'allreports'])->name('allreports');
 Route::get('associcFiles',[App\Http\Controllers\PoliciesController::class,'associcFiles'])->name('associcFiles');
 Route::get('viewImage/{img}',[App\Http\Controllers\ImageManagementController::class,'viewImage'])->name('viewImage');
 Route::get('gallery',[App\Http\Controllers\ImageManagementController::class,'gallery'])->name('gallery');
-Route::get('/',function(){
-    return redirect()->route('home');
-})->name('/');
+
 Route::get('/exportAllDenoate', [App\Http\Controllers\DenoateController::class,'exportAllDenoate'])->name('exportAllDenoate')->middleware('auth');
 Route::get('/exportToExcel/{id}', [App\Http\Controllers\MoneyReportController::class,'exportToExcel'])->name('exportToExcel')->middleware('auth');
 Route::get('money', [App\Http\Controllers\MoneyReportController::class,'index'])->name('money.index')->middleware('auth');
@@ -30,7 +34,6 @@ Route::get('login',[App\Http\Controllers\LoginController::class,'login'])->name(
 Route::get('logout',[App\Http\Controllers\LoginController::class,'logout'])->name('logout');
 Route::get('needy',[App\Http\Controllers\DulniController::class,'needy'])->name('needy');
 Route::post('checklogin',[App\Http\Controllers\LoginController::class,'checklogin'])->name('checklogin');
-Route::get('home',[App\Http\Controllers\MainController::class,'index'])->name('home');
 Route::get('/get_project_data',[App\Http\Controllers\ProjectsController::class,'get_project_data'])->name('get_project_data');
 Route::get('cart',[App\Http\Controllers\MainController::class,'cart'])->name('cart');
 Route::get('ourproject',[App\Http\Controllers\MainController::class,'ourproject'])->name('ourproject');
@@ -56,7 +59,7 @@ Route::resource('dulni',App\Http\Controllers\DulniController::class);
 Route::resource('voluntary',App\Http\Controllers\VoluntaryController::class);
 Route::resource('benfit',App\Http\Controllers\BenfitController::class);
 Route::resource('jobs',App\Http\Controllers\JobController::class);
-// Route::post('store2',[App\Http\Controllers\ContactController::class,'store2'])->name('contact.store2');
+
 Route::get('contact2',[App\Http\Controllers\ContactController::class,'contact'])->name('contact.contact')->middleware('auth');
 Route::get('msgDetail/{contact}',[App\Http\Controllers\ContactController::class,'msgDetail'])->name('contact.msgDetail')->middleware('auth');
 Route::resource('contact',App\Http\Controllers\ContactController::class);
@@ -92,4 +95,5 @@ Route::resource('images',App\Http\Controllers\ImageManagementController::class)-
 Route::resource('files',App\Http\Controllers\pdfFileController::class)->middleware('auth');
 Route::resource('goals',App\Http\Controllers\OurGoalController::class)->middleware('auth');
 Route::resource('reportfiles',App\Http\Controllers\ManageMoneyReportController::class)->middleware('auth');
+Route::resource('otherfiles',App\Http\Controllers\OtherMemberController::class)->middleware('auth');
 Route::resource('otherfiles',App\Http\Controllers\OtherMemberController::class)->middleware('auth');

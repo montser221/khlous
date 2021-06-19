@@ -1,31 +1,29 @@
-<?php
-$data = \App\Models\Settings::find(1);
- ?>
 <!-- Start Footer  -->
 <div class="footer">
   <div class="container">
     <div class="row">
       <div class="col-sm-3">
-        <p class="about">
-          تهدف جمعية البر الخيرية بمحافظة
-المويه إلى تقديم الخدمات التي
-تحتاجها المحافظة والمراكز التابعة له
-        </p>
+          @empty($about)
+
+          <p class="about">
+              {{ $aboutassociation->about ?? ''}}
+            </p>
+            @endempty
         <div class="social">
           <div class="h6"> تابعنا عبر وسائل التواصل الاجتماعي:</div>
-          <a href="#"><img src="{{url('design/facebook.png')}}"></a>
-          <a href="#"><img src="{{url('design/twitter.png')}}"></a>
-          <a href="#"><img src="{{url('design/instagram.png')}}"></a>
-          <a href="#"><img src="{{url('design/linkedin.png')}}"></a>
-          
+          <a href="{{$settingsdata->facebook ?? '' }}"><img src="{{url('design/facebook.png')}}"></a>
+          <a href="{{$settingsdata->twitter ?? ''}}"><img src="{{url('design/twitter.png')}}"></a>
+          <a href="{{$settingsdata->instagram ?? ''}}"><img src="{{url('design/instagram.png')}}"></a>
+          <a href="{{$settingsdata->linkedin ?? ''}}"><img src="{{url('design/linkedin.png')}}"></a>
+
         </div>
       </div>
       <div class="col-sm-3">
         <div class="contact-info fix-footer"> معلومات التواصل</div>
         <ul class="list-unstyled">
 
-          <li ><a href="tel:+055 283-1282" dir="ltr">الهاتف:  {{$data->phoneNumber ?? ''}}</a></li>
-          <li class="d-block">العنوان: {{$data->foundationTitle ?? ''}}  </li>
+          <li ><a href="tel:{{$settingsdata->phoneNumber ?? ''}}" dir="ltr">الهاتف:  {{$settingsdata->phoneNumber ?? ''}}</a></li>
+          <li class="d-block">العنوان: {{$settingsdata->foundationTitle ?? ''}}  </li>
         </ul>
         <div class="pay-by">
           <div class="h6"> نقبل الدفع بواسطة</div>
@@ -78,7 +76,14 @@ $data = \App\Models\Settings::find(1);
     <hr style="border-bottom:2px solid #DDD"/>
     <div class="copyright">
       <div class="footer-left">
-          جميع الحقوق محفوظة لدى جمعية البر الخيرية بمحافظة الموية  تصميم نوافذ الابداع
+          @empty($about)
+
+          جميع الحقوق محفوظة لدى
+          {{$aboutassociation->associationTitle}}
+          بمحافظة
+          {{$aboutassociation->location}}
+          تصميم نوافذ الابداع
+          @endempty
        </div>
 
       <div class="footer-right">

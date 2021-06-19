@@ -6,6 +6,10 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Pagination\Paginator;
+use App\Models\Projects;
+use App\Models\Settings;
+use App\Models\pdfFile;
+use App\Models\AboutAssociation;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -30,6 +34,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         Schema::defaultStringLength(191);
-       
+        view()->share('allprojects',Projects::with('arrow','denoate','pcategory')->latest()->where('projectStatus',1)->paginate(9));
+        view()->share('urgentprojects',Projects::with('arrow','denoate','pcategory')->latest()->where('projectStatus',1)->whereNotIn('projectCategoryId',[1])->paginate());
+        view()->share('settingsdata',Settings::find(1));
+        view()->share('aboutassociation',AboutAssociation::find(1));
+        view()->share('pdffiles',pdfFile::latest()->take(10)->where('fileStatus',1));
     }
 }
