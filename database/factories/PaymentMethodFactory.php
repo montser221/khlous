@@ -26,8 +26,9 @@ class PaymentMethodFactory extends Factory
            'methodName'=>$this->faker->name,
            'methodDesc'=> Str::random(10),
            'methodImage'=> function() use ($images){
-            return $images[rand(0,2)];
-           },
+               return $images[rand(0,2)];
+            },
+            'methodStatus'=> 1,
         ];
     }
 }

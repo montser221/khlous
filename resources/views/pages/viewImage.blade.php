@@ -8,7 +8,7 @@
 @section('content')
     <div class="container">
         <div class="imageView">
-            <img src="{{ url('storage/'.$img->imageFile) }}" alt="{{ $img->imageTitle }}" />
+            <img src="{{ url($img->imageFile) }}" alt="{{ $img->imageTitle }}" />
         </div>
         <a class="btn mb-4 mt-4" href="{{ route('gallery') }}">عودة الى البوم الصور</a>
     </div>

@@ -97,7 +97,9 @@
             <tr>
               <td> رقم  {{$image->imageId}} </td>
               <td>{{  $image->imageTitle }}</td>
-              <td><img class="img-responsive img-thambnail" style="max-width:40px" src="storage/{{  $image->imageFile}}" alt="" /></td>
+              <td><img class="img-responsive img-thambnail"
+                 style="max-width:40px"
+                 src="{{  $image->imageFile}}" alt="" /></td>
 
               <td class="@if ($image->imageStatus ==1) text-success  @else text-danger   @endif">
                 @if ($image->imageStatus ==1)

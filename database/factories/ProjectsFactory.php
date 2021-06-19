@@ -34,7 +34,7 @@ class ProjectsFactory extends Factory
             'projectImage'      => 'design/mv.png',
             'projectIcon'       => 'design/rando.png',
             'projectCost'       => rand(10000,110000000),
-            'projectText'       => $this->faker->paragraph(),
+            'projectText'       => 'dfSvx8S ZLt4hrF 1wi2pDNKh 8Inv7hZD agk0dDx e6e3csa3b RItH1DGk uPvZW3d akK5OZQSaz6mFI GzL6iS M CwG3 htS5 g1yP mWOAp            ',
             'projectStatus'     =>1,
             // 'projectImage'      => $this->faker->image(),
             // 'projectIcon'       =>  $this->faker->image(),

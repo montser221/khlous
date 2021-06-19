@@ -20,7 +20,7 @@ class pdfFileController extends Controller
  //all files
     public function allFiles ()
     {
-      $files = pdfFile::all()->where('fileStatus',1);
+      $files = pdfFile::latest()->where('fileStatus',1)->paginate(6);
       return view('pages.allFiles')->with([
         'files'=>$files,
       ]);

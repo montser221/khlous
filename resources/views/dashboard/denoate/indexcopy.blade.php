@@ -167,9 +167,27 @@
           <th> أحداث  </th>
         </thead>
         <tbody>
+            @php
+                // dd($allDenoate);
+                function increment(&$start = 0, $all)
+                {
+
+                    if($all->hasMorePages())
+                    {
+                        $start += $loop->remaining;
+                    }
+                    return $start;
+                }
+                $ids = 0;
+
+            @endphp
           @foreach ($allDenoate as $denoate)
+          @php
+            $ids++;
+          @endphp
             <tr>
-              <td> رقم  {{$loop->iteration   }}  </td>
+                <td> رقم  {{ $ids   }}  </td>
+
               <td>{{$denoate->projects->projectName}}</td>
               <td>{{  $denoate->denoateName}}</td>
               <td>{{$denoate->denoatePhone}}</td>
@@ -192,7 +210,11 @@
                 </form>
               </td>
             </tr>
+            @php
+            increment($ids,$allDenoate);
+        @endphp
           @endforeach
+
         </tbody>
       </table>
       {{ $allDenoate->links() }}

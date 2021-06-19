@@ -25,6 +25,9 @@ class DatabaseSeeder extends Seeder
         \App\Models\Arrow::factory(15)->create();
         \App\Models\PaymentMethod::factory(4)->create();
         \App\Models\DenoatePayDetail::factory(100)->create();
+        \App\Models\OurGoals::factory(10)->create();
+        \App\Models\Member::factory(10)->create();
+        \App\Models\Attendace::factory(7)->create();
 
     }
 }

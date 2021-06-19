@@ -27,7 +27,7 @@ class AddMessageImageAndVisonImageToAboutassociation extends Migration
     public function down()
     {
         Schema::table('about_associations', function (Blueprint $table) {
-            $table->dropColumns([
+            $table->dropColumn([
                 'messageImage',
                 'visonImage',
             ]);

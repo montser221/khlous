@@ -20,7 +20,7 @@
       <!-- Start Dullani Form-->
         <div class="gallery mx-auto">
           <div class="container" id="dulani-form-container">
-            
+
             <h3 class="text-center mt-5 mb-2 main-color">       البوم الصور    </h3>
             <div class="text-center mt-3 mb-5"><img src="{{url('design/shape.png')}}"></div>
 
@@ -29,7 +29,7 @@
                   @foreach ($imgCollection as $img)
                   <div class=" col-sm-12 col-md-4  img">
                   <a href="{{ route('viewImage',$img->imageId) }}">
-                    <img src="{{ url('storage/'.$img->imageFile) }}" alt="{{ $img->imageTitle }}" /> 
+                    <img src="{{ url($img->imageFile) }}" alt="{{ $img->imageTitle }}" />
                   </a>
                   </div>
                   @endforeach

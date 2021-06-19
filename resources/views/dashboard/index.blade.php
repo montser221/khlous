@@ -16,7 +16,7 @@
 
           <div class="col-sm-3">
               @php
-                  $logo = App\Models\Settings::find(1)->foundationLogo;
+                  $logo = $settingsdata->foundationLogo;
                 //   dd($logo);
               @endphp
             <img src="@if(!empty($logo)) {{url($logo)}} @else{{url('design/dashboard-back.png')}}@endif" class="dashboard-logo" alt="">

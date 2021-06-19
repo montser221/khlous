@@ -138,7 +138,7 @@
         <tbody>
           @foreach ($allprojects as $project)
             <tr>
-              <td>  {{$loop->index   +1}}  </td>
+              <td>  {{$loop->iteration}}  </td>
               <td>{{$project->projectName}}</td>
               <td>{{$project->projectLocation}}</td>
               <td>{{ number_format($project->projectCost,2)}}</td>

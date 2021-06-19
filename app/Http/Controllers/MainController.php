@@ -7,7 +7,6 @@ use App\Models\Projects;
 use App\Models\Services;
 use App\Models\Agent;
 use App\Models\ImageManagement;
-use App\Models\pdfFile;
 use App\Models\Cart;
 use App\Models\video;
 use App\Models\Statistics;
@@ -18,12 +17,12 @@ class MainController extends Controller
   public function index()
   {
       return view('index')->with([
-      'reportFiles'   =>Money::latest()->take(10)->where('reportStatus',1),
-      'services'      =>Services::latest()->take(5)->where('serviceStatus',1),
-      'agents'        =>Agent::latest()->take(5)->where('agentStatus',1),
-      'images'        =>ImageManagement::latest()->take(10)->where('imageStatus',1),
-      'videos'        =>video::latest()->take(10)->where('videoStatus',1),
-      'statistics'    =>Statistics::latest()->take(5)->where('sStatus',1),
+      'reportFiles'   =>Money::latest()->take(10)->where('reportStatus',1)->get(),
+      'services'      =>Services::latest()->take(5)->where('serviceStatus',1)->get(),
+      'agents'        =>Agent::latest()->take(5)->where('agentStatus',1)->get(),
+      'images'        =>ImageManagement::take(10)->where('imageStatus',1)->get(),
+      'videos'        =>video::latest()->take(10)->where('videoStatus',1)->get(),
+      'statistics'    =>Statistics::latest()->take(5)->where('sStatus',1)->get(),
     ]);
   }
 

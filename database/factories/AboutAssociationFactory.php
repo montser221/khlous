@@ -23,7 +23,7 @@ class AboutAssociationFactory extends Factory
     public function definition()
     {
         return [
-            'about'         => Str::random(100),
+            'about'         => 'dfSvx8S ZLt4hrF 1wi2pDNKh 8Inv7hZD agk0dDx e6e3csa3b RItH1DGk uPvZW3d akK5OZQSaz6mFI GzL6iS M CwG3 htS5 g1yP mWOAp',
             'location'      =>  Str::random(10),
             'associationTitle'=> $this->faker->name,
             'managerWord'   => $this->faker->paragraph(),
@@ -34,8 +34,8 @@ class AboutAssociationFactory extends Factory
             'messageIcon'=>   'design/avatar-04.jpg',
             'visonImage' => 'design/vison.jpg',
             'messageImage' => 'design/message.jpg',
-            'vison'=>    Str::random(80),
-            'message'=>  Str::random(80),
+            'vison'=>    'dfSvx8S ZLt4hrF 1wi2pDNKh 8Inv7hZD agk0dDx e6e3csa3b RItH1DGk uPvZW3d akK5OZQSaz6mFI GzL6iS M CwG3 htS5 g1yP mWOAp',
+            'message'=>  'dfSvx8S ZLt4hrF 1wi2pDNKh 8Inv7hZD agk0dDx e6e3csa3b RItH1DGk uPvZW3d akK5OZQSaz6mFI GzL6iS M CwG3 htS5 g1yP mWOAp',
             'associationStatus' => 1,
             'showInHome' => 1,
 

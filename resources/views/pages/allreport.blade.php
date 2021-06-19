@@ -27,10 +27,10 @@
               <div class="row mb-5">
 {{-- //  `ReportId`, `reportTitle`, `reportImageFile`, `reportPdfFile`, `reportStatus`, `created_at`, `updated_at` --}}
 
-                @forelse ($moneyreport as $file)
+                @forelse ($allreportFiles as $file)
                   <div class="col-sm-12 col-md-4 4 mt-5 center-phone">
-                    <a target="_blank" class="d-block" href="{{url($file->reportFile)}}">
-                    <img style="width:100px" src="{{url($file->imageFile)}}" alt="{{ $file->reportTitle }}">
+                    <a target="_blank" class="d-block" href="{{url('/uploads/reportFiles/'.$file->reportPdfFile)}}">
+                    <img style="width:100px" src="{{url("/uploads/reportFiles/".$file->reportImageFile)}}" alt="{{ $file->reportTitle }}">
 
                     <span class="video-title" style=" display: block; margin-right: 15px; margin-top: 14px; margin-bottom: 15px;">{{$file->reportTitle}} </span>
                       </a>
@@ -50,7 +50,7 @@
 
 
           </div>
-          {{ $moneyreport->links() }}
+          {{ $allreportFiles->links() }}
       </div>
     </div>
 </div>

@@ -12,7 +12,7 @@
       <div class="row " style="margin-bottom:15px">
         <div class="col">
           <form class="" action="" method="post">
-            <input type="text" class="form-control" name="" value="">
+            {{-- <input type="text" class="form-control" name="" value=""> --}}
           </form>
         </div>
 

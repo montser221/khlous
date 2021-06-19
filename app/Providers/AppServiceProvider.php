@@ -9,7 +9,9 @@ use Illuminate\Pagination\Paginator;
 use App\Models\Projects;
 use App\Models\Settings;
 use App\Models\pdfFile;
+use App\Models\DenoatePayDetail;
 use App\Models\AboutAssociation;
+use App\Models\PaymentMethod;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -37,7 +39,9 @@ class AppServiceProvider extends ServiceProvider
         view()->share('allprojects',Projects::with('arrow','denoate','pcategory')->latest()->where('projectStatus',1)->paginate(9));
         view()->share('urgentprojects',Projects::with('arrow','denoate','pcategory')->latest()->where('projectStatus',1)->whereNotIn('projectCategoryId',[1])->paginate());
         view()->share('settingsdata',Settings::find(1));
+        view()->share('paymethods',PaymentMethod::latest()->take(4)->get());
+        view()->share('allDenoate',DenoatePayDetail::with('pmethods','projects')->latest()->paginate(9));
         view()->share('aboutassociation',AboutAssociation::find(1));
-        view()->share('pdffiles',pdfFile::latest()->take(10)->where('fileStatus',1));
+        view()->share('pdffiles',pdfFile::latest()->take(10)->where('fileStatus',1)->get());
     }
 }

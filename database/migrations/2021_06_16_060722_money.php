@@ -17,7 +17,7 @@ class Money extends Migration
         // `reportImageFile`, `reportPdfFile`, `reportStatus`,
         Schema::create('money', function (Blueprint $table) {
             $table->id('ReportId');
-            $table->string('retportTitle');
+            $table->string('reportTitle');
             $table->string('reportImageFile')->nullable();
             $table->string('reportPdfFile');
             $table->tinyInteger('reportStatus')->default(0);

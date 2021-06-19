@@ -20,7 +20,7 @@ class videosController extends Controller
 
     public function allVideos ()
     {
-      $videos = video::all()->where('videoStatus',1);
+      $videos = video::latest()->where('videoStatus',1)->paginate(6);
       return view('pages.allVideos')->with([
         'videos'=>$videos,
       ]);
@@ -85,7 +85,7 @@ class videosController extends Controller
      */
     public function update(Request $request, $id)
     {
-     
+
       // check if project status checked or not
       // return $request->input('videostatus');
         if($request->has('videoStatus'))

@@ -787,7 +787,7 @@
 
       <div class="col-sm-12 col-md-3 mt-5 center-phone">
 
-        <img src="{{url("design/image.png")}}" alt="">
+        <img style="margin-left: 20px;width: 80px;" src="{{url("design/image.png")}}" alt="">
 
         <div class="h4 d-inline mb-5 main-color">  البوم الصور</div>
       <br>
@@ -814,7 +814,10 @@
             @foreach ($images as $img)
               <?php $imagecout++; ?>
               @if($imagecout < 5)
-            <li data-target="#carouselImage" data-slide-to="{{$imagecout}}" class="<?php echo $imagecout==0?'active':'' ?>" style="background-image:url(<?php echo  url("storage/".$img->imageFile); ?>);
+            <li data-target="#carouselImage" data-slide-to="{{$imagecout}}"
+            class="<?php
+            echo $imagecout==0?'active':'' ?>"
+             style="background-image:url(<?php echo  url($img->imageFile); ?>);
               background-repeat: no-repeat;background-size: cover;"></li>
               @else
               @endif
@@ -832,9 +835,12 @@
 
                 <?php $z++ ?>
 
-                <div class="carousel-item <?php echo $z==1 ? "active" :''  ?>" id="first-slide">
+                <div class="carousel-item <?php echo $z==1 ? "active" :''  ?>"
+                     id="first-slide">
 
-                  <img style="max-width: 250px;height:170px"  src="<?php echo  url("storage/".$img->imageFile) ?>" class="d-block image"  alt="{{ $img->imageTitle }}">
+                  <img style="max-width: 250px;height:170px"
+                  src="<?php echo  url($img->imageFile) ?>"
+                   class="d-block image"  alt="{{ $img->imageTitle }}">
 
                 </div>
 
@@ -870,7 +876,7 @@
 
       <div class="col-sm-12 col-md-3  mt-5 center-phone">
 
-        <img src="{{url("design/video.png")}}" alt="">
+        <img style="margin-left: 20px;width: 80px;" src="{{url("design/video.png")}}" alt="">
 
       <div class="h4 d-inline mb-5 main-color">البوم الفيديو</div>
       <br>
@@ -903,7 +909,7 @@
 
       <div class="col-sm-12 col-md-3 versions 4 mt-5 center-phone">
 
-        <img src="{{url("design/pdf.png")}}" alt="">
+        <img style="margin-left: 20px;width: 80px;" src="{{url("design/pdf.png")}}" alt="">
 
         <div class="h4 d-inline mb-5 main-color"> اللوائح والسياسات</div>
               <br>
@@ -935,9 +941,9 @@
 
               <div class="col-sm-12 col-md-3 versions 4 mt-5 center-phone">
 
-        <img src="{{url("design/pdf.png")}}" alt="">
+        <img style="margin-left: 20px;width: 80px;" src="{{url("design/pdf.png")}}" alt="">
 
-        <div class="h4 d-inline mb-5 main-color"> التقارير المالية </div>
+        <div  class="h4 d-inline mb-5 main-color"> التقارير المالية </div>
               <br>
         <hr/>
 

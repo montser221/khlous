@@ -19,12 +19,12 @@
       <!-- Start Dullani Form-->
         <div class="allvideos mx-auto">
           <div class="container" id="dulani-form-container">
-            
+
             <h3 class="text-center mt-5 mb-2  main-color"> البوم الفيديو  </h3>
             <div class="text-center mt-3 mb-5"><img src="{{url('design/shape.png')}}"></div>
 
               <div class="row mb-5 center-phone">
-                
+
                 @foreach ($videos as $video)
                   <div class="col-sm-12 col-md-4 4 mt-5">
                     <a class="d-block" target="_blank" href="{{$video->videoLink}}">
@@ -35,15 +35,17 @@
                     <span>0</span>
                     <span class="video-date">{{ $video->created_at->format('Y-m-d')}}</span>
                     </span>
-                    <br>  
-                  </div>     
+                    <br>
+                  </div>
                 @endforeach
               </div>
-         
-          
+
+
           </div>
       </div>
     </div>
 </div>
-{{-- @include('includes.ourlocation') --}}
+<div class="container">
+    {{$videos->links()}}
+</div>
 @include('includes.footer')

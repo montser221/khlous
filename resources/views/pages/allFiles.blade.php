@@ -26,7 +26,7 @@
 
               <div class="row mb-5">
 
-                @foreach ($pdffiles as $file)
+                @foreach ($files as $file)
                   <div class="col-sm-12 col-md-4 4 mt-5 center-phone">
                     <a target="_blank" class="d-block main-color" href="{{url('uploads/files/'.$file->pdfFile)}}">
                     <img src="{{url("uploads/files/".$file->imageFile)}}" alt="" style="width: 100px;">
@@ -47,5 +47,7 @@
       </div>
     </div>
 </div>
-{{-- @include('includes.ourlocation') --}}
+ <div class="container">
+     {{$files->links()}}
+ </div>
 @include('includes.footer')

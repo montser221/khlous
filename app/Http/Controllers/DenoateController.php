@@ -13,10 +13,7 @@ use Moyasar\Providers\PaymentService;
 class DenoateController extends Controller
 {
   public function index(){
-    $allDenoate = DenoatePayDetail::with('pmethods','projects')->latest()->paginate(9);
-      return view('dashboard.denoate.index')->with([
-        'allDenoate'=>$allDenoate,
-      ]);
+      return view('dashboard.denoate.index');
   }
   public function payments(Request $request){
 
