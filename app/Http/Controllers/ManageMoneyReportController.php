@@ -58,7 +58,7 @@ class ManageMoneyReportController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('reportPdfFile')->move($uploads_folder,    $image_full_name);
-        $reportFiles->reportPdfFile=$image_full_name;
+        $reportFiles->reportPdfFile= '/uploads/reportFiles/'.$image_full_name;
     }
     // img file
     if($request->file('reportImageFile')){
@@ -72,7 +72,7 @@ class ManageMoneyReportController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('reportImageFile')->move($uploads_folder,    $image_full_name);
-        $reportFiles->reportImageFile=$image_full_name;
+        $reportFiles->reportImageFile='/uploads/reportFiles/'.$image_full_name;
     }
 
     $reportFiles->reportTitle   = $request->input('reportTitle');
@@ -107,7 +107,7 @@ class ManageMoneyReportController extends Controller
         $image_ext = $request->file('reportPdfFile')->getClientOriginalExtension(); // example: png, jpg ... etc
         $image_full_name = $image_name . '.' . $image_ext;
 
-        $uploads_folder =  getcwd() .'/uploads/reportFiles';
+        $uploads_folder =  getcwd() .'/uploads/reportFiles/';
         if (!file_exists($uploads_folder)) {
             mkdir($uploads_folder, 0777, true);
         }
@@ -116,7 +116,7 @@ class ManageMoneyReportController extends Controller
         \DB::table('money')
         ->where('ReportId',$id)
         ->update([
-          'reportPdfFile'=>$image_full_name,
+          'reportPdfFile'=> '/uploads/reportFiles/'.$image_full_name,
         ]);
     }
 
@@ -125,7 +125,7 @@ class ManageMoneyReportController extends Controller
         $image_ext = $request->file('reportImageFile')->getClientOriginalExtension(); // example: png, jpg ... etc
         $image_full_name = $image_name . '.' . $image_ext;
 
-        $uploads_folder =  getcwd() .'/uploads/reportFiles';
+        $uploads_folder =  getcwd() .'/uploads/reportFiles/';
         if (!file_exists($uploads_folder)) {
             mkdir($uploads_folder, 0777, true);
         }
@@ -133,7 +133,7 @@ class ManageMoneyReportController extends Controller
         \DB::table('money')
         ->where('ReportId',$id)
         ->update([
-          'reportImageFile'=>$image_full_name,
+          'reportImageFile'=>'/uploads/reportFiles/'.$image_full_name,
         ]);
     }
 

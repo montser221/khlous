@@ -87,11 +87,11 @@ class ProjectsController extends Controller
           }
 
           $request->file('projectImage')->move($uploads_folder,$image_full_name);
-          $image = Image::make( $uploads_folder .$image_full_name)->fit(1200,800);
+          $image = Image::make( '/uploads/' .$image_full_name)->fit(1200,800);
           $image->save();
 
 
-          $project->projectImage=$uploads_folder.$image_full_name;
+          $project->projectImage= '/uploads/'.$image_full_name;
 
       }
         // upload project wrapper and store it in database
@@ -176,7 +176,7 @@ class ProjectsController extends Controller
           \DB::table('projects')
           ->where('projectId',$id)
           ->update([
-            'projectIcon'=> $uploads_folder . $image_full_name,
+            'projectIcon'=> '/uploads/' . $image_full_name,
           ]);
       }
       // upload project image and store it in database
@@ -195,7 +195,7 @@ class ProjectsController extends Controller
           \DB::table('projects')
           ->where('projectId',$id)
           ->update([
-            'projectImage'=> $uploads_folder. $image_full_name,
+            'projectImage'=> '/uploads/'. $image_full_name,
           ]);
       }
 

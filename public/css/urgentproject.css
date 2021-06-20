@@ -1,0 +1,93 @@
+.our-projects .all-projects {
+  padding-bottom: 10px;
+  padding-bottom: 30px;
+  box-shadow: 0px 0px 1px 0px;
+  background-color: #fff;
+  box-shadow: #a7a7a766 0px 5px 20px 0px;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  padding-top: 11px;
+  max-width: 30% !important;
+}
+
+.our-projects .all-projects img {
+  max-width: 100%;
+}
+
+.our-projects .denoate-now {
+  margin-top: 50px;
+}
+.our-projects .btn-denoate {
+  background: linear-gradient(rgba(21, 168, 148, 0.8), rgba(21, 144, 127, 0.8));
+  color: #fff;
+  padding: 6px;
+  font-size: 13px;
+  border-radius: 6px;
+  padding-left: 12px;
+  padding-right: 15px;
+}
+.our-projects .to-basket {
+  border: none;
+  padding: 12px;
+  background: linear-gradient(rgba(21, 168, 148, 0.8), rgba(21, 144, 127, 0.8));
+  color: #fff;
+  padding: 8px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+.our-projects .input-denoate {
+  padding-bottom: 5px !important;
+  border-radius: 5px;
+  text-align: center;
+  /* padding: 4px !important; */
+  padding-top: 10px !important;
+  /* max-width: 91px; */
+  font-size: 8px !important;
+  border: 0px solid #dddddc;
+  padding-bottom: 10px !important;
+  box-shadow: #9b9b9b8f 0px 9px 9px -5px;
+  border: 1px solid #ececec;
+}
+
+.our-projects .project-buttons button {
+  margin-right: 8%;
+  margin-top: 2px;
+  border-radius: 30px !important;
+  color: #2fa89c;
+  background-color: #e6e6e6;
+  margin-bottom: 10px;
+  padding: 7px;
+  min-width: 256px;
+  border: 1px solid #2fa89c;
+}
+
+@media (max-width: 576px) {
+  .our-projects .all-projects {
+    max-width: 95% !important;
+    margin-right: 10px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .our-projects .project-buttons button {
+    margin-top: 2px;
+    border-radius: 30px !important;
+    color: #2fa89c;
+    background-color: #e6e6e6;
+    margin-bottom: 10px;
+    padding: 6px;
+    min-width: 186px;
+    border: 1px solid #2fa89c;
+    font-size: 12px;
+  }
+
+  .our-projects .input-denoate {
+    width: 83px;
+  }
+  .our-projects .btn-denoate {
+    padding-left: 7px;
+    padding-right: 8px;
+  }
+}

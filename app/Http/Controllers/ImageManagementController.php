@@ -40,7 +40,7 @@ class ImageManagementController extends Controller
       }
       if($request->file('imageFile')){
 
-        $path = \Storage::putFile('uploads/images/', $request->file('imageFile'));
+        $path = \Storage::putFile('uploads/images', $request->file('imageFile'));
         $images->imageFile=$path;
       }
 
@@ -85,7 +85,7 @@ class ImageManagementController extends Controller
 
       if($request->file('imageFile')){
         Storage::delete(ImageManagement::find($id)->imageFile);
-        $path = Storage::putFile('uploads/images/', $request->file('imageFile'));
+        $path = Storage::putFile('uploads/images', $request->file('imageFile'));
           \DB::table('image_management')
           ->where('imageId',$id)
           ->update([

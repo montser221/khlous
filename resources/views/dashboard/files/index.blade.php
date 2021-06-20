@@ -105,8 +105,11 @@
             <tr>
               <td>  رقم  {{$file->fileId}} </td>
               <td>{{  $file->fileTitle }}</td>
-              <td> <a href="{{ url('uploads/files/' .$file->pdfFile ) }}"> رابط الملف </a> </td>
-              <td><img class="img-responsive img-thambnail" style="max-width:40px" src="{{  url('uploads/files/'.$file->imageFile )}}" alt="" /></td>
+              <td> <a href="{{ url( $file->pdfFile ) }}"> رابط الملف </a> </td>
+              <td><img
+                class="img-responsive img-thambnail"
+                style="max-width:40px"
+                src="{{  url($file->imageFile )}}" alt="" /></td>
 
               <td class="@if ($file->fileStatus ==1) text-success  @else text-danger   @endif">
                 @if ($file->fileStatus ==1)

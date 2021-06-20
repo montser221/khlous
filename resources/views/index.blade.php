@@ -94,8 +94,13 @@
                      <form class="d-inline-flex original-form" action="{{route('addToCart',$project->projectId)}}" method="post">
                        @csrf
                        @method('post')
-                     <input type="number" name="denoate" required   class="input-denoate slider-denoate" placeholder="ضع قيمة التبرع هنا">
-                     <button class="btn-basket" data-toggle="tooltip"  data-placement="bottom" title="إضافة الى السلة">  <i class="fa fa-shopping-basket"></i> </button>
+                     <input type="number"
+                     name="denoate"
+
+                      class="input-denoate slider-denoate"
+                      placeholder="ضع قيمة التبرع هنا">
+
+                     <button class="btn-basket add-to-cart" data-toggle="tooltip"  data-placement="bottom" title="إضافة الى السلة">  <i class="fa fa-shopping-basket"></i> </button>
                    </form>
                     <form class="d-inline-flex dnow-form" action="{{route('addToCartNow',$project->projectId)}}" method="post">
                       @csrf
@@ -184,7 +189,7 @@
         background-size: cover;
         background-position: center;
         overflow: hidden;
-        width: 500px;
+
          @else
           background:var(--secondary-color);
           width:500px;
@@ -209,7 +214,6 @@
         background-size: cover;
         background-position: center;
         overflow: hidden;
-        width: 500px;
         @else
         background:var(--secondary-color);
         width:500px
@@ -835,23 +839,24 @@
 
                 <?php $z++ ?>
 
-                <div class="carousel-item <?php echo $z==1 ? "active" :''  ?>"
+                <div class="carousel-item
+                <?php echo $z==1 ? "active" :''  ?>"
                      id="first-slide">
 
-                  <img style="max-width: 250px;height:170px"
-                  src="<?php echo  url($img->imageFile) ?>"
-                   class="d-block image"  alt="{{ $img->imageTitle }}">
+                  {{-- <img style="max-width: 250px;height:170px"
+                  src="<?php// echo  url($img->imageFile) ?>"
+                   class="d-block image"  alt="{{ $img->imageTitle }}"> --}}
+                   <div   style="background-image:url(<?php echo  url($img->imageFile); ?>);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-origin: border-box;
+                    background-clip: border-box;
+                    height: 261px;">
 
+                   </div>
                 </div>
-
             @endforeach
-
           </div>
-
-
-
-
-
           <a class="carousel-control-prev" href="#carouselImage" role="button" data-slide="prev">
 
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -888,12 +893,12 @@
               <?php continue ?>
             @else
             <a target="_blank" href="{{$video->videoLink}}">
-            <img style="width:50px" src="{{url("uploads/videos/".$video->videoIcon)}}" class="image" alt="">
+            <img style="width:50px" src="{{url($video->videoIcon)}}" class=" " alt="">
             <span class="video-title-">{{$video->videoTitle}}</span>
            </a>
-          <span class="video-shows-count"> <i class="fa fa-eye"></i>
-            <span>0</span>
-            <span class="video-date">{{ $video->created_at->format('Y-m-d')}}</span>
+          <span class="video-shows-count"> <i class=" "></i>
+            <span></span>
+            <span class="video-date"> </span>
           </span>
           <br>
             @endif
@@ -921,13 +926,16 @@
          @if($file_count > 4)
               <?php continue ?>
          @else
-          <a target="_blank" href="{{url('uploads/files/'.$file->pdfFile)}}">
-            <img style="width:60px;height:60px;" src="{{url("uploads/files/".$file->imageFile)}}"  class="image" alt="">
+          <a target="_blank" href="{{url($file->pdfFile)}}"
+             >
+            <img style="width:60px;height:60px;"
+            src="{{url($file->imageFile)}}"
+             class="image" alt="">
           </a>
-          <span class="img-title"> {{ $file->fileTitle }}</span>
-          <span class="img-shows-count"> <i class="fa fa-download"></i>
-            <span>0</span>
-            <span class="img-date">{{ $file->created_at->format('Y-m-d') }}</span>
+          <span class="img-title main-color"> {{ $file->fileTitle }}</span>
+          <span class="img-shows-count"> <i class=""></i>
+            <span> </span>
+            <span class="img-date"> </span>
           </span>
           <br>
         @endif
@@ -954,14 +962,16 @@
               <?php continue ?>
          @else
 
-          <a target="_blank" href="{{url('uploads/reportFiles/'.$file->reportPdfFile)}}">
-            <img class="image" style="width:60px;height:60px;" src="{{url("uploads/reportFiles/".$file->reportImageFile)}}" alt="">
+          <a target="_blank" href="{{url($file->reportPdfFile)}}">
+            <img class="image"
+             style="width:60px;height:60px;"
+             src="{{url($file->reportImageFile)}}" alt="">
 
           <span class="img-title"> {{ $file->reportTitle }}</span>
            </a>
-          <span class="img-shows-count"> <i class="fa fa-download"></i>
-            <span>0</span>
-            <span class="img-date">{{$file->created_at->format('Y-m-d')}}</span>
+          <span class="img-shows-count"> <i class=" "></i>
+            <span></span>
+            {{-- <span class="img-date">{{$file->created_at->format('Y-m-d')}}</span> --}}
           </span>
           <br>
         @endif
@@ -1050,3 +1060,16 @@
   </div>
 
 @endif --}}
+
+<div class="success-alert">
+    <span class="success-close"><i class="fa fa-close "></i></span>
+    تمت اضافة العنصر الى السلة بنجاح
+</div>
+<div class="success-alert">
+    <span class="success-close"><i class="fa fa-close "></i></span>
+    تمت اضافة العنصر الى السلة بنجاح
+</div>
+<div class="success-alert">
+    <span class="success-close"><i class="fa fa-close "></i></span>
+    تمت اضافة العنصر الى السلة بنجاح
+</div>

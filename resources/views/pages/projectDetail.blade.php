@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('title'," $projectData->projectName ")
 {{-- include header --}}
+@push('css')
+    <link rel="stylesheet" href="{{url('css/projectdetail.css')}}">
+@endpush
 @include('includes.header')
 {{-- include contact page --}}
 
@@ -45,25 +48,7 @@
                   <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v9.0" nonce="rcB6zvfw"></script>
 
-                  <style type="text/css" scoped>
-                    .buttons-share a {
-                        padding: 11px;
-                      }
-                       .buttons-share a .fa-facebook {color: #0065bb}
-                       .buttons-share a .fa-twitter {color: #3da1f7}
-                       .buttons-share a .fa-telegram {color: #509bdc}
-                       .buttons-share a .fa-whatsapp {color: #080}
-                       @media (max-width:576px){
-                        .buttons-share a {padding:0px;}
-                         .fa-3x { font-size: 1.8em;}
-                       }
-                       .detail-error {
-                         border:1px solid #ff2424 !important
-                         }
-                         .detail-success {
-                           border:1px solid green !important;
-                         }
-                  </style>
+
                   <div class="buttons-share mb-5 d-flext">
                     {{-- <a href="#">
                       <i class="fa fa-facebook fa-3x"></i>

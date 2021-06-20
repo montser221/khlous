@@ -59,7 +59,7 @@ class pdfFileController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('pdfFile')->move($uploads_folder,    $image_full_name);
-        $files->pdfFile=$image_full_name;
+        $files->pdfFile='/uploads/files/'.$image_full_name;
     }
     // img file
     if($request->file('imageFile')){
@@ -73,7 +73,7 @@ class pdfFileController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('imageFile')->move($uploads_folder,    $image_full_name);
-        $files->imageFile=$image_full_name;
+        $files->imageFile= '/uploads/files/'.$image_full_name;
     }
 
     $files->fileTitle   = $request->input('fileTitle');
@@ -108,7 +108,7 @@ class pdfFileController extends Controller
         $image_ext = $request->file('pdfFile')->getClientOriginalExtension(); // example: png, jpg ... etc
         $image_full_name = $image_name . '.' . $image_ext;
 
-        $uploads_folder =  getcwd() .'/uploads/files';
+        $uploads_folder =  getcwd() .'/uploads/files/';
         if (!file_exists($uploads_folder)) {
             mkdir($uploads_folder, 0777, true);
         }
@@ -117,7 +117,7 @@ class pdfFileController extends Controller
         \DB::table('pdf_files')
         ->where('fileId',$id)
         ->update([
-          'pdfFile'=>$image_full_name,
+          'pdfFile'=> '/uploads/files/'.$image_full_name,
         ]);
     }
 
@@ -126,7 +126,7 @@ class pdfFileController extends Controller
         $image_ext = $request->file('imageFile')->getClientOriginalExtension(); // example: png, jpg ... etc
         $image_full_name = $image_name . '.' . $image_ext;
 
-        $uploads_folder =  getcwd() .'/uploads/files';
+        $uploads_folder =  getcwd() .'/uploads/files/';
         if (!file_exists($uploads_folder)) {
             mkdir($uploads_folder, 0777, true);
         }
@@ -134,7 +134,7 @@ class pdfFileController extends Controller
         \DB::table('pdf_files')
         ->where('fileId',$id)
         ->update([
-          'imageFile'=>$image_full_name,
+          'imageFile'=> '/uploads/files/' .$image_full_name,
         ]);
     }
 

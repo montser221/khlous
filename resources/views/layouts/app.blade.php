@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{url('css/bootstrap-rtl.min.css')}}">
     <link rel="stylesheet" href="{{ url('css/font-awesome.css') }}" >
   <link rel="stylesheet" href="{{ url('css/style.css') }}" >
+    @stack('css')
 
     <title>@yield('title','title')</title>
   </head>
@@ -58,6 +59,7 @@
     <script src="{{url('js/popper.min.js')}}"></script>
     <script src="{{url('js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{url('js/main.js')}}"></script>
+    @stack('scripts')
 </body>
 
 </html>

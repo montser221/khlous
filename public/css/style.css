@@ -10,6 +10,28 @@
 	font-family: 'Frutiger LT Arabic';
 	src: url('../fonts/Frutiger\ LT\ Arabic\ 55\ Roman.ttf');
 }
+
+.success-alert {
+    position: absolute;
+    top: 115px;
+    right: 2px;
+    background-color:  rgb(53 188 53);
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    width: 316px;
+    padding: 13px;
+    border-radius: 9px;
+    z-index: 1;
+    display: block;
+}
+.success-close {
+    position: absolute;
+    top: 16px;
+    left: 15px;
+    font-size: 20px;
+    color: #d13131;
+}
 textarea,input
 {
     direction: rtl;
@@ -156,8 +178,8 @@ color: #FFF;
 	/*border: 2px solid #ccc;*/
 	border-radius: 5px;
 	position: absolute;
-	top: 72px;
-	left: 230px;
+	top: 66px;
+	left: 236px;
 
 }
 
@@ -266,7 +288,7 @@ color: #FFF;
 {
     width:12%;
 }
-.slider .carousel-item.active {margin-bottom:60px;}
+.slider .carousel-item.active {margin-bottom:100px;}
 .brand-img {max-width:156px;}
 ._panel {
 
@@ -1033,8 +1055,8 @@ input[type=number] {direction: rtl;}
 
 	color: #fff;
 
-	background-image: url(../design/backhands.png);
-
+	/* background-image: url(../design/backhands.png); */
+    background-image: linear-gradient( rgb(81 81 81 / 70%) , rgb(78 131 124 / 70%) ), url(../design/backhands.png);
 	background-repeat: no-repeat;
 
 	background-size: cover;
@@ -1072,7 +1094,7 @@ min-height: 370px;
 
 .our-achieving .item-1{
 
-		border: 6px solid #FFF;
+		border: 6px solid var(--secondary-color);
 
 		width: 134px;
 
@@ -1093,6 +1115,7 @@ min-height: 370px;
     top: 52px;
     left: 30px;
 }
+
 .our-achieving .achieve-text {
 
 	/*margin-right: 36%;*/
@@ -2843,7 +2866,7 @@ margin-left: calc(63% - 50%)
 	font-size: 10px;
 }
 .project-detail .p-detail #btn-basket{ left: 25% !important; }
-.slider .carousel-item.active {margin-bottom: 84px !important;}
+.slider .carousel-item.active {margin-bottom: 106px !important;}
 	.our-achieving .item-1{
 		width: 60px !important;
 		height: 60px !important;
@@ -2868,7 +2891,7 @@ margin-left: calc(63% - 50%)
 	}
     .media-libarary .video-title, .media-libarary .versions .img-title { margin-right: 122px !important;}
 
-	.navbar-fix .main-cart {left: -205px !important}
+	.navbar-fix .main-cart {left: -182px !important}
 	.zakat .btn-fix {left: 16% !important}
 	.zakat-basket {margin-right: 18% !important}
 	.project-detail .p-detail #btn-basket{ left: 22%; }
@@ -2899,6 +2922,11 @@ margin-left: calc(63% - 50%)
 }
 /*Mobile And Tablet Screen*/
 @media (max-width: 414px) {
+    .our-achieving .plus-sign {
+        top: 30px;
+        left: 39px;
+        font-size: 11px;
+    }
 	.navbar-fix .main-cart {
 	     /* top: 49px;
    		 left: -249px; */
@@ -3769,8 +3797,8 @@ font-size: .8rem !important;
 	/*border: 2px solid #ccc;*/
 	border-radius: 5px;
 	position: relative;
-   /* top: 49px;
-    left: -216px;*/
+    top: 49px;
+    left: -236px;
 
 }
 
@@ -3801,7 +3829,7 @@ font-size: .8rem !important;
 		position: absolute;
 
 		margin-right: 20px;
-        right: 10px;
+        right: 20px;
 		width: 80%;
 
 		background: #fff;

@@ -26,7 +26,7 @@
           <div class="h2 text-center main-color"> احسب زكاتك الآن! </div>
           <div class="text-center mt-3 mb-4"><img src="{{url('design/shape.png')}}"></div>
           <div class="text-center text-gray mb-5">
-          الآن يمكنك دفع الزكاة الخاصة بك عن طريق موقع جمعية
+          الآن يمكنك دفع الزكاة الخاصة بك عن طريق موقع الجمعية
           </div>
         </div>
 

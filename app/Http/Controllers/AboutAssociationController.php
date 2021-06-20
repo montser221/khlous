@@ -64,7 +64,7 @@ class AboutAssociationController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('messageImage')->move($uploads_folder,    $image_full_name);
-        $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
+        $image = Image::make( ("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
         $image->save();
         $AboutAssociation->messageImage='/uploads/aboutassoiation/'.$image_full_name;
     }
@@ -81,7 +81,7 @@ class AboutAssociationController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('visonImage')->move($uploads_folder,    $image_full_name);
-        $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
+        $image = Image::make( ("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
         $image->save();
         $AboutAssociation->visonImage='/uploads/aboutassoiation/'.$image_full_name;
     }
@@ -98,7 +98,7 @@ class AboutAssociationController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('associationIcon')->move($uploads_folder,    $image_full_name);
-        $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
+        $image = Image::make( ("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
         $image->save();
         $AboutAssociation->associationIcon='/uploads/aboutassoiation/'.$image_full_name;
     }
@@ -114,7 +114,7 @@ class AboutAssociationController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('visonIcon')->move($uploads_folder,    $image_full_name);
-        $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
+        $image = Image::make( ("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
         $image->save();
         $AboutAssociation->visonIcon='/uploads/aboutassoiation/'.$image_full_name;
     }
@@ -130,7 +130,7 @@ class AboutAssociationController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('messageIcon')->move($uploads_folder,    $image_full_name);
-        $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
+        $image = Image::make( ("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
         $image->save();
         $AboutAssociation->messageIcon='/uploads/aboutassoiation/'.$image_full_name;
     }
@@ -206,7 +206,7 @@ class AboutAssociationController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('messageImage')->move($uploads_folder,    $image_full_name);
-        $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
+        $image = Image::make( ("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
         $image->save();
         \DB::table('about_associations')
         ->where('associationId',$id)
@@ -227,7 +227,7 @@ class AboutAssociationController extends Controller
               mkdir($uploads_folder, 0777, true);
           }
           $request->file('visonImage')->move($uploads_folder,    $image_full_name);
-          $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
+          $image = Image::make( ("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
           $image->save();
           \DB::table('about_associations')
           ->where('associationId',$id)
@@ -248,7 +248,7 @@ class AboutAssociationController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('visonIcon')->move($uploads_folder,    $image_full_name);
-        $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
+        $image = Image::make( ("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
         $image->save();
         \DB::table('about_associations')
         ->where('associationId',$id)
@@ -269,7 +269,7 @@ class AboutAssociationController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('messageIcon')->move($uploads_folder,    $image_full_name);
-        $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
+        $image = Image::make( ("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
         $image->save();
         \DB::table('about_associations')
         ->where('associationId',$id)
@@ -288,7 +288,7 @@ class AboutAssociationController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('associationIcon')->move($uploads_folder,    $image_full_name);
-        $image = Image::make( public_path("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
+        $image = Image::make( ("uploads/aboutassoiation/{$image_full_name}"))->fit(800,800);
         $image->save();
         \DB::table('about_associations')
         ->where('associationId',$id)

@@ -12,6 +12,7 @@ use App\Models\pdfFile;
 use App\Models\DenoatePayDetail;
 use App\Models\AboutAssociation;
 use App\Models\PaymentMethod;
+use App\Models\Policies;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -43,5 +44,6 @@ class AppServiceProvider extends ServiceProvider
         view()->share('allDenoate',DenoatePayDetail::with('pmethods','projects')->latest()->paginate(9));
         view()->share('aboutassociation',AboutAssociation::find(1));
         view()->share('pdffiles',pdfFile::latest()->take(10)->where('fileStatus',1)->get());
+        view()->share('allpolicies',Policies::latest()->paginate(8));
     }
 }

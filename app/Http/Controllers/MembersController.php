@@ -60,7 +60,7 @@ class MembersController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('memberImage')->move($uploads_folder,    $image_full_name);
-        $image = Image::make( public_path("uploads/members/{$image_full_name}"))->fit(1200,1200);
+        $image = Image::make( ("uploads/members/{$image_full_name}"))->fit(1200,1200);
         $image->save();
         $member->memberImage=$image_full_name;
     }
@@ -72,7 +72,7 @@ class MembersController extends Controller
 
   }
 
- 
+
   /**
    * Show the form for editing the specified resource.
    *
@@ -133,7 +133,7 @@ class MembersController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('memberImage')->move($uploads_folder,    $image_full_name);
-        $image = Image::make( public_path("uploads/members/{$image_full_name}"))->fit(1200,1200);
+        $image = Image::make( ("uploads/members/{$image_full_name}"))->fit(1200,1200);
         $image->save();
         \DB::table('members')
         ->where('memberId',$id)
@@ -148,7 +148,7 @@ class MembersController extends Controller
     ->update([
       'memberEmail'  =>$request->input('memberEmail'),
     ]);
-         
+
     }
     if($request->has('memberPhone'))
     {
@@ -157,7 +157,7 @@ class MembersController extends Controller
     ->update([
       'memberPhone'  =>$request->input('memberPhone'),
     ]);
-        
+
     }
 
     \DB::table('members')

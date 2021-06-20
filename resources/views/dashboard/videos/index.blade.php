@@ -103,12 +103,13 @@
           <th> أحداث  </th>
         </thead>
         <tbody>
-      
+
           @foreach ($allvideos as $video)
             <tr>
               <td> رقم {{$video->videoId}} </td>
               <td>{{  $video->videoTitle }}</td>
-              <td><img class="" style="width:50px" src="{{url('uploads/videos/'.$video->videoIcon)}}" alt="" /></td>
+              <td><img class="" style="width:50px"
+                src="{{url($video->videoIcon)}}" alt="" /></td>
               <td> <a class="ml-4" style="color:#333" id="link" target="_blank" href="{{ url($video->videoLink."") }}"><i class="fa fa-link " style="color:#ff7612"></i> فتح الرابط</a> <a  class="_copy" id="copy" style="cursor:pointer;color:#333; text-decoration :none;"> <i class="fa fa-copy" style="color:#ff7612"></i>  نسخ الرابط</a> </td>
               <td class="@if ($video->videoStatus==1) text-success  @else text-danger   @endif">
                 @if ($video->videoStatus==1)

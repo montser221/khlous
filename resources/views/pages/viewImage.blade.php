@@ -10,6 +10,6 @@
         <div class="imageView">
             <img src="{{ url($img->imageFile) }}" alt="{{ $img->imageTitle }}" />
         </div>
-        <a class="btn mb-4 mt-4" href="{{ route('gallery') }}">عودة الى البوم الصور</a>
+        <a class="btn mb-4 mt-4 main-color" href="{{ route('gallery') }}">عودة الى البوم الصور</a>
     </div>
 @endsection

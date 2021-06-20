@@ -20,32 +20,31 @@
       <!-- Start Dullani Form-->
         <div class="allfiles mx-auto">
           <div class="container" id="dulani-form-container">
-            
+
             <h3 class="text-center mt-5 mb-2 main-color">   محاضر الجمعية العمومية   </h3>
             <div class="text-center mt-3 mb-5"><img src="{{url('design/shape.png')}}"></div>
 
               <div class="row mb-5">
-                
-                @foreach ($associcFiles as $file)
+
+                @foreach ($allpolicies as $file)
                   <div class="col-sm-12 col-md-4 4 mt-5 center-phone">
                     <a target="_blank" class="d-block main-color" href="{{url($file->policyFile)}}">
                     <img src="{{url( $file->policyImage)}}" alt="" style="width: 100px;">
-                  
+
                     <span class="video-title" style=" display: block; margin-right: 15px; margin-top: 14px; margin-bottom: 15px;">{{$file->policyTitle}} </span>
                       </a>
-                    <span class="video-shows-count"> <i class="fa fa-eye"></i>
-                    <span>0</span>
-                    <span class="video-date">{{ $file->created_at->format('Y-m-d')}}</span>
+                    {{-- <span class="video-shows-count"> <i class="fa fa-eye"></i> --}}
+                    {{-- <span>0</span> --}}
+                    {{-- <span class="video-date">{{ $file->created_at->format('Y-m-d')}}</span> --}}
                     </span>
-                    <br>  
-                  </div>     
+                    <br>
+                  </div>
                 @endforeach
               </div>
-         
-          
           </div>
       </div>
     </div>
 </div>
-{{-- @include('includes.ourlocation') --}}
+{{$allpolicies->links()}}
+
 @include('includes.footer')

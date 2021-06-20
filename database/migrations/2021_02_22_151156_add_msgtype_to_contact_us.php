@@ -14,7 +14,11 @@ class AddMsgtypeToContactUs extends Migration
     public function up()
     {
         Schema::table('contact_us', function (Blueprint $table) {
-            //
+            $table->enum('msgType',[
+                'complaint',
+                'suggist',
+                'inquire',
+            ]);
         });
     }
 
@@ -26,7 +30,7 @@ class AddMsgtypeToContactUs extends Migration
     public function down()
     {
         Schema::table('contact_us', function (Blueprint $table) {
-            //
+            $table->dropColumnIfExists('msgType');
         });
     }
 }

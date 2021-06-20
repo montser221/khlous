@@ -33,6 +33,15 @@ $(document).on("scroll", function () {
 });
 
 $(function () {
+  let successalert = $(".success-alert"),
+    closesuccessalert = $(".success-close");
+  //   successalert.fadeOut(10000);
+  closesuccessalert.on("click", function () {
+    successalert.fadeOut(5000, function () {
+      this.remove();
+    });
+  });
+
   let allProjects = $("#allProjects");
   let urgentProjects = $("#urgentProjects");
   let carouselAllProjects = $(".carouselProjects");
@@ -292,7 +301,7 @@ $(document).ready(function () {
   let _zkatResult = $("#_zkatResult");
   let _add_to = $("#add-to-basket-zakat");
   _add_to.on("click", function (e) {
-    if (_zkatResult.val() < 100) {
+    if (_zkatResult.val() < 1) {
       e.preventDefault();
     }
   });

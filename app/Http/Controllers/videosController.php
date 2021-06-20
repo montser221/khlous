@@ -50,7 +50,7 @@ class videosController extends Controller
               mkdir($uploads_folder, 0777, true);
           }
           $request->file('videoIcon')->move($uploads_folder,    $image_full_name);
-          $video->videoIcon=$image_full_name;
+          $video->videoIcon= '/uploads/videos/' .$image_full_name;
       }
       // check if project status checked or not
       if($request->has('videoStatus')){
@@ -124,7 +124,7 @@ class videosController extends Controller
             \DB::table('videos')
             ->where('videoId',$id)
             ->update([
-              'videoIcon'=>$request->input('videoIcon'),
+              'videoIcon'=> '/uploads/videos/' . $image_full_name,
             ]);
         }
       if($request->has('videoTitle'))

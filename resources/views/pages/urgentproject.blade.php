@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('title','المشاريع العاجلة')
+@push('css')
+    <link rel="stylesheet" href="{{url('css/urgentproject.css')}}">
+@endpush
 
 @section('header')
     @include('includes.header')
@@ -26,121 +29,7 @@
 
 @endforeach
 
-<style type="text/css">
-.our-projects .all-projects
-{
 
-    padding-bottom: 10px;
-    padding-bottom: 30px;
-    box-shadow: 0px 0px 1px 0px;
-    background-color: #FFF;
-    box-shadow: #a7a7a766 0px 5px 20px 0px;
-    border-radius: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    margin-left: 15px;
-    padding-top: 11px;
-    max-width: 30% !important;
-}
-
-
-.our-projects .all-projects img
-{
-      max-width: 100%;
-}
-
-.our-projects   .denoate-now
-{
-  margin-top: 50px;
-}
-.our-projects   .btn-denoate
-{
-    background-color: #8eb527;
-    color: #FFF;
-    padding: 6px;
-    font-size: 13px;
-    border-radius: 6px;
-    padding-left: 12px;
-    padding-right: 15px;
-}
-.our-projects   .to-basket
-{
-    border: none;
-    padding: 12px;
-    background-color: #8eb527;
-    color: #FFF;
-     padding: 8px;
-    font-size: 13px;
-    border-radius: 6px;
-}
-.our-projects   .input-denoate
-{
-  padding-bottom: 5px !important;
-    border-radius: 5px;
-    text-align: center;
-    /* padding: 4px !important; */
-    padding-top: 10px !important;
-    /* max-width: 91px; */
-    font-size: 8px !important;
-    border: 0px solid #DDDDDC;
-    padding-bottom: 10px !important;
-    box-shadow: #9b9b9b8f 0px 9px 9px -5px;
-    border: 1px solid #ececec;
-}
-
-.our-projects .project-buttons button
-{
-    margin-right:8%;
-      margin-top: 2px;
-   border-radius: 30px !important;
-    color: #2fa89c;
-    background-color: #E6E6E6;
-    margin-bottom: 10px;
-    padding: 7px;
-    min-width: 256px;
-    border: 1px solid #2fa89c;
-}
-
-@media (max-width:576px)
- {
-
-.our-projects .all-projects {
-    max-width: 95% !important;
-    margin-right: 10px !important;
-  }
-
-}
-
-
-@media(min-width: 768px) and (max-width: 991px)
-
-{
-  .our-projects .project-buttons button
-  {
-      margin-top: 2px;
-      border-radius: 30px !important;
-      color: #2fa89c;
-      background-color: #E6E6E6;
-      margin-bottom: 10px;
-      padding: 6px;
-      min-width: 186px;
-      border: 1px solid #2fa89c;
-      font-size: 12px;
-  }
-
-  .our-projects .input-denoate {
-    width: 83px
-  }
-.our-projects .btn-denoate
-{
-      padding-left: 7px;
-    padding-right: 8px;
-}
-
-}
-
-
-</style>
 
 @if ($show)
 
@@ -162,7 +51,7 @@
         <div class="all-projects col-md-4 col-sm-6">
 
           <a href="{{route('projectDetail',$project->projectId)}}">
-          <img style=" "  src="{{ url("uploads/".$project->projectImage) }}" class="" alt="1" />
+          <img style=" "  src="{{ url($project->projectImage) }}" class="" alt="1" />
 
           <span class="d-block text-center main-color mt-3 mb-3">{{$project->projectName ?? ''}}</span>
         </a>
@@ -197,10 +86,7 @@
              <strong style="display: inline-block">SAR</strong>
              <strong>
             <?php
-            $getAllDenoate = \DB::table('denoate_pay_details')
-                                ->where('projectTable',$project->projectId)
-                                ->sum('moneyValue');
-                                // ->get();
+            $getAllDenoate = $project->denoate->sum('moneyValue');
             ?>
             @if($getAllDenoate >= $project->projectCost ) {{number_format( $project->projectCost ,0)}} @else  {{ number_format( $getAllDenoate ,0)}} @endif
             </strong>
@@ -224,7 +110,7 @@
           <div class="project-buttons" id="our-projects-buttons">
             <small class="d-block text-gray mb-2 mt-4"> أختيار مبلغ التبرع </small>
             <?php
-                $arr = \App\Models\Arrow::all()->where('projectTable',$project->projectId)->where('arrowStatus',1);
+                $arr = $project->arrow;
 
                 $count_arr = $arr->count();
 

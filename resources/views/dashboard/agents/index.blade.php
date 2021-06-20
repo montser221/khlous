@@ -22,7 +22,7 @@
               <!-- Button trigger modal Create New agents -->
           <button data-toggle="modal" data-target="#createagents" type="button" class="btn text-orange text-white " name="button">  <i class="fa fa-plus "></i> &nbsp;&nbsp; أنشاء </button>
         </div>
- 
+
       </div>
 
       <!-- Modal -->
@@ -101,7 +101,9 @@
             <tr>
               <td>   {{$agent->agentId}} </td>
               <td>{{  $agent->agentName }}</td>
-              <td><img class="img-responsive img-thambnail" style="max-width:40px" src="{{  url('uploads/agents/'.$agent->agentImage )}}" alt="" /></td>
+              <td><img class="img-responsive img-thambnail"
+                style="max-width:40px"
+                 src="{{  url($agent->agentImage )}}" alt="" /></td>
 
               <td class="@if ($agent->agentStatus ==1) text-success  @else text-danger   @endif">
                 @if ($agent->agentStatus ==1)

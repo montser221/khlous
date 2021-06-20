@@ -28,14 +28,18 @@
 
                 @foreach ($files as $file)
                   <div class="col-sm-12 col-md-4 4 mt-5 center-phone">
-                    <a target="_blank" class="d-block main-color" href="{{url('uploads/files/'.$file->pdfFile)}}">
-                    <img src="{{url("uploads/files/".$file->imageFile)}}" alt="" style="width: 100px;">
+                    <a target="_blank" class="d-block main-color"
+                    href="{{url($file->pdfFile)}}">
+                    <img
+                    src="{{url($file->imageFile)}}"
+                     alt=""
+                     style="width: 100px;">
 
                     <span class="video-title" style=" display: block; margin-right: 15px; margin-top: 14px; margin-bottom: 15px;">{{$file->fileTitle}} </span>
                       </a>
-                    <span class="video-shows-count"> <i class="fa fa-eye"></i>
-                    <span>0</span>
-                    <span class="video-date">{{ $file->created_at->format('Y-m-d')}}</span>
+                    {{-- <span class="video-shows-count"> <i class="fa fa-eye"></i> --}}
+                    {{-- <span>0</span> --}}
+                    {{-- <span class="video-date">{{ $file->created_at->format('Y-m-d')}}</span> --}}
                     </span>
                     <br>
                   </div>

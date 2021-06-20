@@ -1,0 +1,29 @@
+.buttons-share a {
+  padding: 11px;
+}
+.buttons-share a .fa-facebook {
+  color: #0065bb;
+}
+.buttons-share a .fa-twitter {
+  color: #3da1f7;
+}
+.buttons-share a .fa-telegram {
+  color: #509bdc;
+}
+.buttons-share a .fa-whatsapp {
+  color: #080;
+}
+@media (max-width: 576px) {
+  .buttons-share a {
+    padding: 0px;
+  }
+  .fa-3x {
+    font-size: 1.8em;
+  }
+}
+.detail-error {
+  border: 1px solid #ff2424 !important;
+}
+.detail-success {
+  border: 1px solid green !important;
+}

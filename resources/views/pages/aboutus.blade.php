@@ -1,15 +1,9 @@
 @extends('layouts.app')
 
-
 @section('title','من نحن')
-
-
 @include('includes.header')
 
-
-
 <!-- Start Contact Us -->
-
 <div class="contact" id="about">
 
   <div class=" px-0 banner" >

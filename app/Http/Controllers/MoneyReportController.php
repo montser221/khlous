@@ -12,11 +12,7 @@ class MoneyReportController extends Controller
 {
 	 public function index()
     {
-     	$allprojects = Projects::latest()->where('projectStatus',1)->paginate(10);
-    	// dd($allprojects);
-      return view('dashboard.moneyreport.index')->with([
-        'allprojects'=>$allprojects,
-      ]);
+      return view('dashboard.moneyreport.index');
     }
 
 

@@ -200,7 +200,7 @@
                  <input class="form-control " required type="password" name="source[cvc]" placeholder="رمز الامان">
                </div>
              </div>
-             <button class="btn  btn-main-color back-main position-fix cart-p-fix   mx-auto" type="submit">تبرع الآن</button>
+             {{-- <button class="btn  btn-main-color back-main position-fix cart-p-fix   mx-auto" type="submit">تبرع الآن</button> --}}
            </form>
 
            <form  id="sdad-form" class="hide" method="post" action="https://api.moyasar.com/v1/payments.html">
@@ -214,7 +214,7 @@
              <input type="hidden" name="source[type]" value="sadad" />
 
              <input type="text" class="form-control mt-3" name="source[username]" placeholder="الاسم على سداد">
-                <button class="btn btn-main-color  back-main position-fix cart-p-fix   mx-auto" type="submit">تبرع الآن</button>
+                {{-- <button class="btn btn-main-color  back-main position-fix cart-p-fix   mx-auto" type="submit">تبرع الآن</button> --}}
            </form>
            </div>
          </div>
@@ -222,17 +222,9 @@
        </div>
      </div>
 </div>
- <script src="{{url('js/jquery.min.js')}}"></script>
+
 {{-- @include('includes.ourlocation') --}}
+@push('scripts')
+    <script src="{{url('js/cart.js')}}"></script>
+@endpush
 @include('includes.footer')
-<script>
-$('.cartinput').change(function () {
-    var sum = 0;
-    $('.cartinput').each(function() {
-        sum += Number($(this).val());
-    });
-    $('.total').text(sum);
-     $('.amount').val(parseFloat($('.total').text())*100)
-});
-$('.amount').val(parseFloat($('.total').text())*100)
-</script>

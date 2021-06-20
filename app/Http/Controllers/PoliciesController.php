@@ -14,14 +14,12 @@ class PoliciesController extends Controller
      */
     public function index()
     {
-      $allpolicies = Policies::latest()->paginate(8);
-        return view('dashboard.policies.index')->with(['allpolicies'=>$allpolicies]);
+        return view('dashboard.policies.index');
     }
     // associcFiles
     public function associcFiles()
     {
-      $associcFiles = Policies::latest()->paginate(8);
-        return view('pages.associcFiles')->with(['associcFiles'=>$associcFiles]);
+        return view('pages.associcFiles');
     }
 
     /**
@@ -56,9 +54,9 @@ class PoliciesController extends Controller
 
       if($request->file('policyFile')){
         // upload policyImage icon and store it in database
-          
+
           $path = Storage::disk('public_path')->putFile('uploads/policies', $request->file('policyFile'));
-          
+
           // $image = Image::make(Storage::path($path))->fit(1200,700);
           // $image->save();
           $policy->policyFile=$path;
@@ -109,11 +107,11 @@ class PoliciesController extends Controller
           'policyStatus'=>0,
         ]);
       }
-  
+
 
       if($request->file('policyFile')){
         // // update policyImage icon and store it in database
-  
+
           $path = Storage::disk('public_path')->putFile('uploads/policies', $request->file('policyFile'));
           // $image = Image::make(Storage::path($path))->fit(1200,700);
           // $image->save();
@@ -126,9 +124,9 @@ class PoliciesController extends Controller
       }
       if($request->file('policyImage')){
         // // upload policyImage icon and store it in database
-        
+
           $path = Storage::disk('public_path')->putFile('uploads/policies', $request->file('policyImage'));
-        
+
           // $image = Image::make(Storage::path($path))->fit(1200,700);
           // $image->save();
           \DB::table('policies')
@@ -138,7 +136,7 @@ class PoliciesController extends Controller
           ]);
 
       }
-    
+
       \DB::table('policies')
       ->where('policyId',$id)
       ->update([

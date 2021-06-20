@@ -45,9 +45,9 @@ class AgentsController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('agentImage')->move($uploads_folder,    $image_full_name);
-        // $image = Image::make( public_path("uploads/agents/{$image_full_name}"))->fit(800,800);
-        // $image->save();
-        $agents->agentImage=$image_full_name;
+        $image = Image::make( ("uploads/agents/{$image_full_name}"))->fit(800,800);
+        $image->save();
+        $agents->agentImage= "uploads/agents/".$image_full_name;
     }
 
     if ($request->has('agentStatus')) {
@@ -90,12 +90,12 @@ class AgentsController extends Controller
             mkdir($uploads_folder, 0777, true);
         }
         $request->file('agentImage')->move($uploads_folder,    $image_full_name);
-        // $image = Image::make( public_path("uploads/agents/{$image_full_name}"))->fit(800,800);
-        // $image->save();
+        $image = Image::make( ("uploads/agents/{$image_full_name}"))->fit(800,800);
+        $image->save();
         \DB::table('agents')
         ->where('agentId',$id)
         ->update([
-          'agentImage'=>$image_full_name,
+          'agentImage'=>"uploads/agents/".$image_full_name,
         ]);
     }
     if ($request->has('agentStatus'))

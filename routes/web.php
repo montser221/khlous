@@ -5,7 +5,6 @@ use Illuminate\Database\Eloquent\Factories\Sequence;
 
 Route::get('/',[App\Http\Controllers\MainController::class,'index'])->name('/');
 
-
 Route::get('viewFile',[App\Http\Controllers\ViewFileController::class,'viewFile'])->name('viewFile');
 Route::get('exportNeedy',function(){
     return Excel::download(new App\Exports\Needy(), 'needy_'.date('Y-M-D').'.xlsx');
@@ -95,5 +94,4 @@ Route::resource('images',App\Http\Controllers\ImageManagementController::class)-
 Route::resource('files',App\Http\Controllers\pdfFileController::class)->middleware('auth');
 Route::resource('goals',App\Http\Controllers\OurGoalController::class)->middleware('auth');
 Route::resource('reportfiles',App\Http\Controllers\ManageMoneyReportController::class)->middleware('auth');
-Route::resource('otherfiles',App\Http\Controllers\OtherMemberController::class)->middleware('auth');
 Route::resource('otherfiles',App\Http\Controllers\OtherMemberController::class)->middleware('auth');

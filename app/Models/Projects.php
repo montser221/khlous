@@ -11,6 +11,7 @@ class Projects extends Model
 {
     use HasFactory;
     protected $primaryKey  = 'projectId';
+    // protected static $model = $this;
     protected $fillable = [
       'projectId',
       'projectName',
@@ -39,4 +40,19 @@ class Projects extends Model
         return $this->hasMany(Arrow::class,'projectTable','projectId');
     }
 
+    // public static function creating()
+    // {
+    //     $model::create([
+    //         'projectName'       => 'zakat project',
+    //         'whatsapp'          => 5545421212,
+    //         'projectLocation'   => 'bla bla',
+    //         'projectCategoryId' => ProjectsCategories::all()->random()->categoryId,
+    //         'projectDesc'       => 'some text',
+    //         'projectImage'      => 'no image',
+    //         'projectIcon'       => 'no image',
+    //         'projectCost'       => rand(1000000,1100000000),
+    //         'projectText'       => 'dfSvx8S ZLt4hrF 1wi2pDNKh 8Inv7hZD agk0dDx e6e3csa3b RItH1DGk uPvZW3d akK5OZQSaz6mFI GzL6iS M CwG3 htS5 g1yP mWOAp            ',
+    //         'projectStatus'     => 0,
+    //     ]);
+    // }
 }

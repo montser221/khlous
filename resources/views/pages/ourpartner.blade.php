@@ -12,7 +12,7 @@
 <div class="h2 text-center">من  شركائنا</div>
 <div class="text-center mt-2 mb-5"><img src="{{url('design/shape.png')}}"></div>
 
-<div id="carouselAgentsIndicators" class="carousel slide" data-ride="carousel" data-interval="false">    
+<div id="carouselAgentsIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
         <?php $i=-1; ?>
       <ol class="carousel-indicators">
      @foreach ($agents->chunk(5) as $agent)
@@ -28,7 +28,7 @@
         @foreach ($agent as $agen)
 
         <div class="d-flex">
-          <img class="partner-image" src="{{ url("uploads/agents/".$agen->agentImage) }}" alt="1" />
+          <img class="partner-image" src="{{ url($agen->agentImage) }}" alt="1" />
           </div>
       @endforeach
 
@@ -38,9 +38,9 @@
   </div>
 
     </div>
- 
+
   </div> <!-- end Carousel -->
- 
+
   </div> <!--End container -->
 </div>
   @endif
