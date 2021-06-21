@@ -461,6 +461,8 @@ $(document).ready(function () {
 
   // });
 
+  // let addtocart = $('.add-to-cart');
+  // if(addtocart)
   //validation before add items to basket slider button
   let _add_ = $("._add_");
   _add_.on("click", function (e) {

@@ -100,7 +100,13 @@
                       class="input-denoate slider-denoate"
                       placeholder="ضع قيمة التبرع هنا">
 
-                     <button class="btn-basket add-to-cart" data-toggle="tooltip"  data-placement="bottom" title="إضافة الى السلة">  <i class="fa fa-shopping-basket"></i> </button>
+                     <button
+                     class="btn-basket add-to-cart"
+                     data-toggle="tooltip"
+                     data-placement="bottom"
+                     title="إضافة الى السلة">
+                     <i class="fa fa-shopping-basket"></i>
+                    </button>
                    </form>
                     <form class="d-inline-flex dnow-form" action="{{route('addToCartNow',$project->projectId)}}" method="post">
                       @csrf
@@ -1061,15 +1067,7 @@
 
 @endif --}}
 
-<div class="success-alert">
+{{-- <div class="success-alert">
     <span class="success-close"><i class="fa fa-close "></i></span>
     تمت اضافة العنصر الى السلة بنجاح
-</div>
-<div class="success-alert">
-    <span class="success-close"><i class="fa fa-close "></i></span>
-    تمت اضافة العنصر الى السلة بنجاح
-</div>
-<div class="success-alert">
-    <span class="success-close"><i class="fa fa-close "></i></span>
-    تمت اضافة العنصر الى السلة بنجاح
-</div>
+</div> --}}
