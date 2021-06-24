@@ -13,6 +13,7 @@
           <div class="h2" style="padding-bottom:100px !important">
             الوظائـــف المتاحة
           </div>
+
         </div>
       </div>
     </div>
@@ -28,6 +29,8 @@
         <div class="content mx-auto">
           <div class="container dulni-fix" id="dulani-form-container">
             <h3 class="text-center mt-3 mb-5">     ارسال طلب توظيف</h3>
+            <div class="text-center mt-3 mb-5"><img src="{{url('design/shape.png')}}"></div>
+
               <form method="post" action="{{route('jobs.store')}}"  enctype="multipart/form-data" id="dulani-form">
                 @csrf
                 @method('POST')

@@ -68,9 +68,9 @@
               </div>
             </div>
             <div class="form-row">
-              
+
               <div class="col">
-                  
+
                     <select class="form-control mb-3" name="socialState" style="padding:0 8px 0 0;" placeholder="">
                       <option class=""  value="unkhown"  >الحالة الإجتماعية </option>
                       <option class="" value="married"   @if (old('socialState') ==  "married")  selected @endif>متزوج</option>
@@ -100,9 +100,9 @@
                       </div>
                     @enderror
               </div>
-       
+
               <div class="col">
-                  
+
                     <select class="form-control mb-3"  required="required" name="gender" style="padding:0 8px 0 0; ">
                       <option  value="unkhown" class="" >الجنس</option>
                       @if (old('gender') ==  "male")  @endif
