@@ -388,7 +388,9 @@ $(document).ready(function () {
   });
 
   $(".btn-project").on("click", function (e) {
-    var _confirm = confirm("هل تريد حذف العنصر");
+    var _confirm = confirm(
+      " تحذير حذف هذا العنصر يؤدي الى حذف جميع الصفوف المرتبطة به في قاعدة البيانات هل توافق ؟"
+    );
     if (_confirm) return true;
     else return false;
   });

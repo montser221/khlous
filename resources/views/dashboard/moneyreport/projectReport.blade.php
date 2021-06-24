@@ -80,8 +80,8 @@
 
       	@foreach($allDenoate as $denoate)
       		<tr>
-      			<td>{{$denoate->denoateId}}</td>
-      			<td>{{$denoate->project->projectName ?? ""}}</td>
+      			<td>{{$loop->iteration }}</td>
+      			<td>{{$denoate->projects->projectName ?? ""}}</td>
       			<td>{{$denoate->denoateName}}</td>
       			<td>{{ $denoate->denoatePhone }}</td>
       			<td>{{$denoate->moneyValue}}</td>

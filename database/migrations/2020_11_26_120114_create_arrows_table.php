@@ -12,14 +12,14 @@ class CreateArrowsTable extends Migration
      * @return void
      */
     public function up()
-    { 
+    {
         // 'arrowName','arrowValue','created_at','updated_at'
         Schema::create('arrows', function (Blueprint $table) {
             $table->id('arrowId');
             $table->string('arrowName');
             $table->integer('arrowValue')->nullable();
             $table->unsignedBigInteger('projectTable');
-            $table->foreign('projectTable')->references('projectId')->on('projects');
+            $table->foreign('projectTable')->references('projectId')->on('projects')->onDelete('cascade')->onUpdate('cascade');
             $table->tinyInteger('arrowStatus')->default(0);
             $table->timestamps();
         });

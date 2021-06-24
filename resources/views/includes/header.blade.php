@@ -1,7 +1,6 @@
 {{-- Start Header --}}
 <!-- Strt header top -->
 <?php
-
 $otherFiles = \App\Models\OtherMember::latest()->take(10)->get();
  ?>
 

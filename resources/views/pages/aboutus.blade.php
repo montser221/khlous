@@ -48,7 +48,7 @@
 
           <div class="text-center" style="margin-top: -22px;margin-bottom: 40px;color: #1b8633;">
 
-            عن جمعية البر الخيرية
+            عن جمعية مساجد خليص
 
           </div>
 
@@ -124,7 +124,7 @@
     <div class="col-sm-12 col-md-5 mb-5">
 
       <div class="back-vison"
-      style="@if($aboutassociation->visonImage)
+      style="@if($aboutassociation->visonImage ?? '')
         background:url('{{ $aboutassociation->visonImage }}') !important;
         background-repeat: no-repeat;
         background-size: cover;

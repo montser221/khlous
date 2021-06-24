@@ -18,9 +18,9 @@ class CreateDenoatePayDetailsTable extends Migration
             $table->string('denoatePhone');
             $table->string('denoateName')->nullable();
             $table->unsignedBigInteger('projectTable');
-            $table->foreign('projectTable')->references('projectId')->on('projects');
+            $table->foreign('projectTable')->references('projectId')->on('projects')->onDelete('cascade')->onUpdate('cascade');;
             $table->unsignedBigInteger('paymentMethodTable');
-            $table->foreign('paymentMethodTable')->references('methodId')->on('payment_methods');
+            $table->foreign('paymentMethodTable')->references('methodId')->on('payment_methods')->onDelete('cascade')->onUpdate('cascade');;
             $table->unsignedBigInteger('moneyValue');
             $table->tinyInteger('denoateStatus')->nullable();
             $table->timestamps();

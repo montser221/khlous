@@ -79,10 +79,9 @@
           @empty($about)
 
           جميع الحقوق محفوظة لدى
-          {{$aboutassociation->associationTitle}}
-          بمحافظة
-          {{$aboutassociation->location}}
-          تصميم نوافذ الابداع
+          {{$aboutassociation->associationTitle ?? ''}}
+
+        تصميم Layout
           @endempty
        </div>
 

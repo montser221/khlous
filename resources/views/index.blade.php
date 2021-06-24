@@ -28,7 +28,7 @@
 
       {{-- @if ($project->projectStatus==1) --}}
 
-       <img style="margin-bottom: 170px !important;" src="{{ url($project->projectImage)}}" class="d-block w-100" alt="...">
+       <img style="margin-bottom: 200px !important;" src="{{ url($project->projectImage)}}" class="d-block w-100" alt="...">
 
        <div class="container">
 
@@ -158,7 +158,7 @@
      <div class="text-center mt-1 mb-4"><img src="{{url('design/shape.png')}}"></div>
     </div>
     <div class="text-center" style="margin-top: -22px;margin-bottom: 40px;color: #1b8633;">
-      عن جمعية البر الخيرية
+      عن جمعية   مساجد خليص
     </div>
     <div class="row">
       <div class="col-lg-1"></div>
@@ -281,7 +281,7 @@
 @if ($show)
     <div class="h2 text-center">من مشاريعنا</div>
      <div class="text-center mt-3 mb-4"><img src="{{url('design/shape.png')}}"></div>
-    <div class="text-center p-fix">مجموعة المشاريع التطوعية التي قامت بها المؤسسة</div>
+    <div class="text-center p-fix">مجموعة المشاريع التطوعية التي قامت بها الجمعية</div>
 @endif
 
     <div class="p-buttons">
@@ -507,7 +507,7 @@
           <div class="project-buttons">
             <small class="d-block text-gray mb-2"> أختيار مبلغ التبرع </small>
             <?php
-                $arr = \App\Models\Arrow::all()->where('projectTable',$project->projectId)->where('arrowStatus',1);
+                $arr = $project->arrow;
                 $count_arr = $arr->count();
                 ?>
                 @if($count_arr <= 0)
@@ -572,21 +572,13 @@
 @endif
   </div> <!-- end urgent Carousel -->
 
-
-
-
-
-
   </div> <!--End container -->
 </div>
 <br>
 
 {{-- End Our Projects --}}
 
-
-
 <!-- Start Our Services -->
-
 <?php
 
   $show=0;
@@ -622,7 +614,7 @@
 
     <div class="service-fix text-center">
 
-      مجموعة الخدمات التطوعية التي تقوم بها المؤسسة
+      مجموعة الخدمات التطوعية التي تقوم بها الجمعية
 
     </div>
 

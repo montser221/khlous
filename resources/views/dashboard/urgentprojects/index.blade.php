@@ -130,10 +130,10 @@
           <th>    مكان المشروع</th>
           <th>   التكلفة</th>
           <th> الواتساب</th>
-          <th>الفئة المستهدفة</th>
+          {{-- <th>الفئة المستهدفة</th> --}}
           <th>الصورة المميزة</th>
           <th>الايقونة</th>
-          <th>مشروع مميز</th>
+          {{-- <th>مشروع مميز</th> --}}
           <th> الحالة  </th>
           <th> أحداث  </th>
         </thead>
@@ -148,7 +148,7 @@
               <td>{{$project->projectLocation}}</td>
               <td>{{$project->projectCost}}</td>
               <td>{{$project->whatsapp}}</td>
-              <td>{{ $project->pcategory->categoryName}}</td>
+              {{-- <td>{{ $project->pcategory->categoryName}}</td> --}}
               <td> <img style="max-width:40px;max-height:40px" src="{{url("".$project->projectImage)}}" class="special-img" alt=""> </td>
               <!--<td> <img style="max-width:40px;max-height:40px" src="{{url("".$project->projectWrapper)}}" class="wrapper" alt=""> </td>-->
               <td> <img style="max-width:40px;max-height:40px" src="{{url("".$project->projectIcon)}}" class="icon" alt="" /></i> </td>

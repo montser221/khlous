@@ -25,7 +25,7 @@
 
       </div>
 
-       
+
 
       <table class="table table-hover table-bordered">
         <thead>
@@ -36,25 +36,21 @@
           <th> أحداث  </th>
         </thead>
         <tbody>
-            <?php
-                $ids = 0;
-            ?>
+
           @foreach ($allprojects as $project)
-          <?php
-          $ids++;
-          ?>
+
             <tr>
-              <td> رقم {{$ids  }} </td>
+              <td> رقم {{$loop->iteration  }} </td>
               <td>{{$project->projectName}}</td>
               <td>{{$project->projectCost}}</td>
               <td>{{$project->whatsapp}}</td>
-              
+
               <td>
                   <a class="btn  btn-sm ml-1" href="{{route('dDetail',$project->projectId)}}" > <i class=" mr-1 ml-1 fa fa-eye "></i> تقرير</a>
                 {{-- <form class="form-inline" action="{{route('projects.destroy',$project->projectId) }}" method="post">
                   @csrf
                   @method("DELETE")
-                 
+
                   <button   type="submit" class="btn  btn-sm  btn-project"><i class="fa fa-bank "></i></button>
                 </form> --}}
               </td>
@@ -62,8 +58,8 @@
           @endforeach
         </tbody>
       </table>
-       
-          
+
+
          {{$allprojects->links() ?? null }}
     </div>
 @endsection

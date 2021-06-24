@@ -17,16 +17,16 @@ class CreateProjectsTable extends Migration
             $table->id('projectId');
             $table->string('projectName');
             $table->unsignedBigInteger('projectCategoryId');
-            $table->foreign('projectCategoryId')->references('categoryId')->on('projects_categories');
+            $table->foreign('projectCategoryId')->references('categoryId')->on('projects_categories')->onDelete('cascade')->onUpdate('cascade');
             $table->string('whatsapp')->nullable();
-            $table->string('projectDesc');
+            $table->text('projectDesc');
             $table->string('projectLocation');
             $table->string('projectIcon');
             $table->string('projectImage');
             $table->text('projectText');
             $table->unsignedBigInteger('projectCost')->default(0);
             $table->tinyInteger('projectStatus')->default(0);
-            $table->tinyInteger('projectVip')->default(0);
+            // $table->tinyInteger('proinjectVip')->default(0);
             $table->timestamps();
         });
     }

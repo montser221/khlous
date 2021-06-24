@@ -22,7 +22,7 @@ class UsersCategoriesFactory extends Factory
     public function definition()
     {
         return [
-            'userCategoryName'=> Str::random(15),
+            'userCategoryName'=> 'كل المستخدمين',
         ];
     }
 }

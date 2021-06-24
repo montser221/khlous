@@ -3,41 +3,27 @@
 @section('content')
 {{-- Start Dashboard --}}
 <div class="dashboard">
-
   <div class="container-fluid">
-
     <div class="row">
-
       {{-- start dashboard to --}}
-
       <div class="col-sm-12 dashboard-top">
-
         <div class="row ">
-
           <div class="col-sm-3">
               @php
-                  $logo = $settingsdata->foundationLogo;
+                  $logo = $settingsdata->foundationLogo ?? '';
                 //   dd($logo);
               @endphp
             <img src="@if(!empty($logo)) {{url($logo)}} @else{{url('design/dashboard-back.png')}}@endif" class="dashboard-logo" alt="">
           </div>
           <div class="col-sm-6">
             <form class="form-inline" action="#" method="post">
-
               {{-- <input class="form-control" type="text" name="search" value="" placeholder="أبحث عن شيئ"> --}}
-
             </form>
-
           </div>
-
           <div class="col-sm-3 user-details">
-
             {{-- <span class="fa fa-bell fa-lg"></span> --}}
-
             {{-- <span class="fa fa-comment-o fa-lg"></span> --}}
-
             <img style="border-radius: 50%;"  class="image-rounded" src=" @if(!empty(Auth::user()->profileImage) ) {{url("uploads/profile/".Auth::user()->profileImage)}} @else {{url('design/avatar-04.jpg')}} @endif" alt="">
-
             <div class="dropdown">
 
               <button class="dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -84,7 +70,7 @@
           <div class="main-color mt-4 mb-4" style="border-bottom:2px solid "></div>
 
           <a class="list-group-item" href="{{route('users.index')}}"><i class="fa fa-user " aria-hidden="true"></i>&nbsp; إدارة المستخدمين</a>
-          <a class="list-group-item" href="{{route('userscategories.index')}}"> <i class="fa fa-user-o fa-fw" aria-hidden="true"></i>&nbsp; مجموعات المستخدمين  </a>
+          {{-- <a class="list-group-item" href="{{route('userscategories.index')}}"> <i class="fa fa-user-o fa-fw" aria-hidden="true"></i>&nbsp; مجموعات المستخدمين  </a> --}}
           <a class="list-group-item" href="{{route('members.index')}}"> <i class="fa fa-users fa-fw" aria-hidden="true"></i>&nbsp;  أعضاء مجلس الإدارة    </a>
           <a class="list-group-item" href="{{route('attendace.index')}}"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i>&nbsp;  إدارة أوقات الدوام</a>
           <a class="list-group-item" href="{{route('agents.index')}}"><i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp;     شركائنا  </a>

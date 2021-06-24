@@ -42,10 +42,10 @@
           <th> وسيلة الدفع  </th>
           <th> تاريخ الدفع  </th>
           <th> الحالة  </th>
- 
+
         </thead>
         <tbody>
- 
+
       	@foreach($allDenoate as $denoate)
       		<tr>
       			<td>{{$denoate->denoateId}}</td>
@@ -55,9 +55,9 @@
       			<td>{{$denoate->pmethods->methodName}}</td>
       			<td>{{$denoate->created_at }}</td>
       			<td class="@if($denoate->denoateStatus==1) alert alert-success @else alert alert-danger @endif">
-      				@if($denoate->denoateStatus==1) 
-      				 تم الدفع  
-      				@else 
+      				@if($denoate->denoateStatus==1)
+      				 تم الدفع
+      				@else
 	      				لم يتم الدفع
   					@endif
       			</td>

@@ -169,6 +169,7 @@
         <tbody>
           @foreach ($allDenoate as $denoate)
             <tr>
+
               <td> رقم  {{$loop->iteration   }}  </td>
               <td>{{$denoate->projects->projectName}}</td>
               <td>{{  $denoate->denoateName}}</td>
