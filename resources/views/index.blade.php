@@ -155,8 +155,9 @@
   <div class="container">
     <div class="word-title text-center">
       <h2>كلمة رئيس الجمعية</h2>
-     <div class="text-center mt-1 mb-4"><img src="{{url('design/shape.png')}}"></div>
-    </div>
+      <div class="text-center title mt-3 mb-4">
+        {{-- <img src="{{url('design/shape.png')}}"> --}}
+    </div>    </div>
     <div class="text-center" style="margin-top: -22px;margin-bottom: 40px;color: #1b8633;">
       عن جمعية   مساجد خليص
     </div>
@@ -280,8 +281,9 @@
 
 @if ($show)
     <div class="h2 text-center">من مشاريعنا</div>
-     <div class="text-center mt-3 mb-4"><img src="{{url('design/shape.png')}}"></div>
-    <div class="text-center p-fix">مجموعة المشاريع التطوعية التي قامت بها الجمعية</div>
+    <div class="text-center title mt-3 mb-4">
+        {{-- <img src="{{url('design/shape.png')}}"> --}}
+    </div>    <div class="text-center p-fix">مجموعة المشاريع التطوعية التي قامت بها الجمعية</div>
 @endif
 
     <div class="p-buttons">
@@ -610,7 +612,9 @@
       خدماتنـــــــا
 
     </div>
-     <div class="text-center mb-4"><img src="{{url('design/shape.png')}}"></div>
+    <div class="text-center title mt-3 mb-4">
+        {{-- <img src="{{url('design/shape.png')}}"> --}}
+    </div>
 
     <div class="service-fix text-center">
 
@@ -767,8 +771,9 @@
             }
         </style>
         <div class="h2 text-center mb-2 mt-5 center-phone">أخبار الجمعية </div>
-             <div class="text-center center-phone  mb-4">
-            <img src="{{url('design/shape.png')}}"></div>   
+             <div class="text-center title center-phone  mb-4">
+
+        </div>   
               <a class="twitter-timeline" data-lang="ar" data-width="100%" data-height="800" data-theme="dark" href="https://twitter.com/AbtaalUmluj?ref_src=twsrc%5Etfw">Tweets by AbtaalUmluj</a>
              <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
             </script>
@@ -782,9 +787,10 @@
 
   <div class="container">
 
-    <div class="h2 text-center mb-2 mt-5 center-phone">المكتبة الاعلامية</div>
-     <div class="text-center center-phone  mb-4"><img src="{{url('design/shape.png')}}"></div>
-
+    <div class="title h2 text-center mb-2 mt-5 center-phone">المكتبة الاعلامية</div>
+    <div class="text-center  mt-3 mb-4">
+        {{-- <img src="{{url('design/shape.png')}}"> --}}
+    </div>
     <div class="row">
 
       <div class="col-sm-12 col-md-3 mt-5 center-phone">

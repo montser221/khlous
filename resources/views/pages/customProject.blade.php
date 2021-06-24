@@ -14,8 +14,9 @@
       @foreach ($customProject as $custom)
         <div class="col-sm-12">
           <div class="h2 text-center mt-5 main-color">   @if ($custom)   {{$custom->projectName ?? ''}} @endif  </div>
-           <div class="text-center center-phone  mb-2"><img src="{{url('design/shape.png')}}"></div>
-
+          <div class="text-center title mt-3 mb-4">
+            {{-- <img src="{{url('design/shape.png')}}"> --}}
+        </div>
         </div>
         <div class="col-sm-12 mt-5">
           <div class="row">

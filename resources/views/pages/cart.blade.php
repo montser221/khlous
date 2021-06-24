@@ -27,8 +27,9 @@
           </div>
            <div class="container cart-fix" id="basket-container">
            <h3 class="text-center mt-5">سلة التبرعات</h3>
-           <div class="text-center mt-3 mb-4"><img src="{{url('design/shape.png')}}"></div>
-
+           <div class="text-center title mt-3 mb-4">
+            {{-- <img src="{{url('design/shape.png')}}"> --}}
+        </div>
            <div class="container order-fix mt-3" id="inner-container">
 
             @if (\Session::has('error'))

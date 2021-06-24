@@ -22,8 +22,9 @@
           <div class="container" id="dulani-form-container">
 
             <h3 class="text-center mt-5 mb-2"> التقارير العامة </h3>
-            <div class="text-center mt-3 mb-5"><img src="{{url('design/shape.png')}}"></div>
-
+            <div class="text-center title mt-3 mb-4">
+                {{-- <img src="{{url('design/shape.png')}}"> --}}
+            </div>
               <div class="row mb-5">
 {{-- //  `ReportId`, `reportTitle`, `reportImageFile`, `reportPdfFile`, `reportStatus`, `created_at`, `updated_at` --}}
 

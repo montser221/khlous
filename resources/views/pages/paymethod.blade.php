@@ -18,8 +18,9 @@
     <div class="h2 text-center mt-5 main-color">
       طرق التبرع
     </div>
-    <div class="text-center mt-3 mb-4"><img src="{{url('design/shape.png')}}"></div>
-
+    <div class="text-center title mt-3 mb-4">
+        {{-- <img src="{{url('design/shape.png')}}"> --}}
+    </div>
     <div class="text-center mt-3 text-gray">
       الطرق الالكترونية للتبرع للمؤسسة
     </div>

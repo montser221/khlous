@@ -10,8 +10,9 @@
 
 
 <div class="h2 text-center">من  شركائنا</div>
-<div class="text-center mt-2 mb-5"><img src="{{url('design/shape.png')}}"></div>
-
+<div class="text-center title mt-3 mb-4">
+    {{-- <img src="{{url('design/shape.png')}}"> --}}
+</div>
 <div id="carouselAgentsIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
         <?php $i=-1; ?>
       <ol class="carousel-indicators">

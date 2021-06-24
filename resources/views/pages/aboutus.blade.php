@@ -42,7 +42,9 @@
 
             <h2>كلمة رئيس الجمعية</h2>
 
-        <div class="text-center mt-3 mb-4"><img src="{{url('design/shape.png')}}"></div>
+        <div class="text-center title mt-3 mb-4">
+            {{-- <img src="{{url('design/shape.png')}}"> --}}
+        </div>
 
           </div>
 
@@ -324,7 +326,9 @@
 
   </div>
 
- <div class="text-center  mb-5" style="    margin-left: calc(63% - 50%);"><img src="{{url('design/shape.png')}}"></div>
+ <div class="text-center title  mb-5" style="    margin-left: calc(63% - 50%);">
+    {{-- <img src="{{url('design/shape.png')}}"> --}}
+</div>
   <div class="container">
 
     <div class="row">
@@ -378,7 +382,9 @@
       أعضاء مجلس الإدارة
 
     </div>
-        <div class="text-center mt-3 mb-4"><img src="{{url('design/shape.png')}}"></div>
+        <div class="text-center title mt-3 mb-4">
+            {{-- <img src="{{url('design/shape.png')}}"> --}}
+        </div>
 
     <div class="mt-3 text-center text-gray">
 
@@ -473,7 +479,9 @@
       أوقات العمل في الجمعية
 
     </div>
-        <div class="text-center mt-3 mb-4"><img src="{{url('design/shape.png')}}"></div>
+        <div class="text-center title mt-3 mb-4">
+            {{-- <img src="{{url('design/shape.png')}}"> --}}
+        </div>
 
 
 

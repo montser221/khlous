@@ -25,8 +25,9 @@
               @include('includes._success')
             </div>
             <h3 class="text-center mt-3 mb-2"> طلب تسجيل متطوع </h3>
-              <div class="text-center mt-3 mb-5"><img src="{{url('design/shape.png')}}"></div>
-
+            <div class="text-center title mt-3 mb-4">
+                {{-- <img src="{{url('design/shape.png')}}"> --}}
+            </div>
               <form method="post" action="{{route('voluntary.store')}}" id="dulani-form">
                 @csrf
                 @method('post')

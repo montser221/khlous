@@ -24,11 +24,12 @@
           @include('includes._success')
         </div>
         <h3 class="text-center mt-3 mb-2">  تسجيل مستفيد </h3>
-                <div class="text-center mt-3 mb-4"><img src="{{url('design/shape.png')}}"></div>
-
+        <div class="text-center title mt-3 mb-4">
+            {{-- <img src="{{url('design/shape.png')}}"> --}}
+        </div>
         <div class="benfit-top nav  nav-tabs  id="myTab" role="tablist"">
           <hr>
-         
+
         </div>
           <form method="post" action="{{route('benfit.store')}}" id="dulani-form">
             @csrf
@@ -75,9 +76,9 @@
               </div>
             </div>
             <div class="form-row">
-              
+
               <div class="col">
-                  
+
                     <select class="form-control mb-3" name="socialState" style="padding:0 8px 0 0;" placeholder="">
                       <option class=""  value="unkhown"  >الحالة الإجتماعية </option>
                       <option class="" value="married"   @if (old('socialState') ==  "married")  selected @endif>متزوج</option>
@@ -107,9 +108,9 @@
                       </div>
                     @enderror
               </div>
-       
+
               <div class="col">
-                  
+
                     <select class="form-control mb-3"  required="required" name="gender" style="padding:0 8px 0 0; ">
                       <option  value="unkhown" class="" >الجنس</option>
                       @if (old('gender') ==  "male")  @endif

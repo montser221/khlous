@@ -10,7 +10,18 @@
 	font-family: 'Frutiger LT Arabic';
 	src: url('../fonts/Frutiger\ LT\ Arabic\ 55\ Roman.ttf');
 }
-
+.title::after {
+    content: '';
+    margin-top: 10px;
+    background: #15A894;
+    height: 7px;
+    width: 205px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    display: block;
+    transform: translateY(8px);
+}
 .success-alert {
     position: absolute;
     top: 115px;
@@ -2940,6 +2951,10 @@ margin-left: calc(63% - 50%)
 		{left:60% !important}
 }
 @media (max-width:576px) {
+    .title::after {
+        width: 100px;
+    }
+
 	.media-libarary .image{margin-left: 230px}
     .our-projects .carousel .carousel-inner .item-1 .project-buttons
     {

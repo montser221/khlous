@@ -21,8 +21,9 @@
           <div class="container" id="dulani-form-container">
 
             <h3 class="text-center mt-5 mb-2  main-color"> البوم الفيديو  </h3>
-            <div class="text-center mt-3 mb-5"><img src="{{url('design/shape.png')}}"></div>
-
+            <div class="text-center title mt-3 mb-4">
+                {{-- <img src="{{url('design/shape.png')}}"> --}}
+            </div>
               <div class="row mb-5 center-phone">
 
                 @foreach ($videos as $video)

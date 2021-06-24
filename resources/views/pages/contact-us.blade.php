@@ -28,8 +28,9 @@
 
           <div class="h2 text-right center-phone" style="color: var(--main-color)">تواصل معنا  </div>
           <div class="word-title text-center center-phone">
-              <div class="text-right mt-3 mb-4 center-phone"><img src="{{url('design/shape.png')}}"></div>
-
+            <div class="text-center   mt-3 mb-4">
+                {{-- <img src="{{url('design/shape.png')}}"> --}}
+            </div>
           </div>
           <div class="short-text text-gray mb-2">
             تواصل معنا لأي استفسار على الخدمات التكافلية الخيرية

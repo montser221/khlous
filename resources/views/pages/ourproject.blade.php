@@ -32,8 +32,9 @@
 @if ($show)
 
     <div class="h2 text-center">من مشاريعنا</div>
-     <div class="text-center mt-3 mb-4"><img src="{{url('design/shape.png')}}"></div>
-
+    <div class="text-center title mt-3 mb-4">
+        {{-- <img src="{{url('design/shape.png')}}"> --}}
+    </div>
     <div class="text-center p-fix">مجموعة المشاريع التطوعية التي قامت بها المؤسسة</div>
 
     {{--  <button class="btn btn-light">أخترنا لكم </button>
